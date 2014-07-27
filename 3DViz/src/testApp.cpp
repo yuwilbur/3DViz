@@ -19,6 +19,8 @@ void testApp::setup(){
   particle_system_.setup(ofVec3f(0, 0, -100), ofVec3f(600, 400, 100));
 
   glEnable(GL_NORMALIZE);
+    
+  image_texture_ = image_input_.image("boards_of_canada.jpg");
 }
 
 

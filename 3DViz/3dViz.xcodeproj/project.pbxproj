@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14B454A11984D80100E280FE /* ImageInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14B4549F1984D80100E280FE /* ImageInput.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		D107666819847DB3009E74CC /* HandController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D107666619847DB3009E74CC /* HandController.cpp */; };
 		D17054291984D45700A3B6D4 /* ParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D17054271984D45700A3B6D4 /* ParticleSystem.cpp */; };
@@ -72,6 +73,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		14B4549F1984D80100E280FE /* ImageInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageInput.cpp; sourceTree = "<group>"; };
+		14B454A01984D80100E280FE /* ImageInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInput.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		D107666619847DB3009E74CC /* HandController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HandController.cpp; sourceTree = "<group>"; };
 		D107666719847DB3009E74CC /* HandController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandController.h; sourceTree = "<group>"; };
@@ -202,6 +205,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
+				14B4549F1984D80100E280FE /* ImageInput.cpp */,
+				14B454A01984D80100E280FE /* ImageInput.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -302,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14B454A11984D80100E280FE /* ImageInput.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				D107666819847DB3009E74CC /* HandController.cpp in Sources */,

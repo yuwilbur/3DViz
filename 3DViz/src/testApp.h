@@ -4,6 +4,7 @@
 #include "Leap.h"
 #include "HandController.h"
 #include "ParticleSystem.h"
+#include "ImageInput.h"
 
 class testApp : public ofBaseApp {
 
@@ -33,4 +34,7 @@ private:
   
   HandController hand_controller_;
   ParticleSystem particle_system_;
+    
+  ImageInput image_input_;
+  ofTexture image_texture_;
 };
