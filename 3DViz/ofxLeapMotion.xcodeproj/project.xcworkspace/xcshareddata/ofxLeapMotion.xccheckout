@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0614FCDE-A67D-4E1C-A39D-7C0C7DAF3402</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ofxLeapMotion</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AC0FE5D7-7DE9-4A32-A24D-1D3312C9FC26</key>
+		<string>https://github.com/yuwilbur/3DViz</string>
+		<key>FC5943B9-F561-4929-8DAE-44E95EE996F5</key>
+		<string>ssh://github.com/ofTheo/ofxLeapMotion.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ofxLeapMotion.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AC0FE5D7-7DE9-4A32-A24D-1D3312C9FC26</key>
+		<string>../..</string>
+		<key>FC5943B9-F561-4929-8DAE-44E95EE996F5</key>
+		<string>../../../../../addons/ofxLeapMotion</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/yuwilbur/3DViz</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AC0FE5D7-7DE9-4A32-A24D-1D3312C9FC26</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AC0FE5D7-7DE9-4A32-A24D-1D3312C9FC26</string>
+			<key>IDESourceControlWCCName</key>
+			<string>3DViz</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FC5943B9-F561-4929-8DAE-44E95EE996F5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxLeapMotion</string>
+		</dict>
+	</array>
+</dict>
+</plist>
