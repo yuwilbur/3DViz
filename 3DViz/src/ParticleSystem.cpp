@@ -15,9 +15,9 @@ void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
   
   gravity_strength = 0.0;
   gravity_position = ofVec3f::zero();
-  particleSize = 4.0f;
+  particleSize = 0.5f;
   timeStep = 0.005f;
-  numParticles = 100000;
+  numParticles = 500000;
   
   // Width and Heigth of the windows
   width = ofGetWindowWidth();

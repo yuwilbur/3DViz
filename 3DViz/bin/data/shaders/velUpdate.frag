@@ -24,32 +24,27 @@ void main(void){
   vec3 nextPos = pos;
   nextPos += vel * timestep;
 
-
-  // If it´s going to collide change the velocity course
-  /*
-  if ( nextPos.x < -1.0)
-    vel.x = 0.5 * abs(vel.x);
-
-  if ( nextPos.x > 1.0)
-    vel.x = 0.5 * -abs(vel.x);
-
-  if (nextPos.y < -1.0)
-    vel.y = 0.5 * abs(vel.y);
-
-  if ( nextPos.y > 1.0)
-    vel.y = 0.5 * -abs(vel.y);
-  
-  if ( nextPos.z > 100.0)
-    vel.z = -abs(vel.z);
-
-  if ( nextPos.z < -100.0)
-    vel.z = abs(vel.z);
-    */
-
   vec3 grav_delta = gravity_position - pos;
-  float strength = 500.0 * gravity_strength / (3000.0 + length(grav_delta));
+  float dist = length(grav_delta);
+  float strength = 0.0;
+  // Attractive force.
+  if (st.x < 300) {
+    strength = gravity_strength / (5000.0 + dist / 2000.0);
+  }
+  else {
+    strength = gravity_strength / (5000.0 + dist * sqrt(dist) / 2000.0);
+  }
+
+  // Repulsive force.
+  if (st.x < 300) {
+    strength -= gravity_strength / (2 + 45 * dist);
+  }
+  else {
+    strength -= gravity_strength / (5.0 + 5 * dist * sqrt(dist));
+  }
+
   vel += strength * normalize(grav_delta);
-  vel *= 0.98;
+  vel *= 0.96;
 
   gl_FragColor = vec4(vel.x,vel.y,vel.z,1.0);   // Then save the vel data into the velocity FBO
 }

@@ -14,9 +14,9 @@ void testApp::setup(){
 
   cam.setOrientation(ofPoint(-20, 0, 0));
   
-  hand_controller_.setTranslation(ofVec3f(0, -300, -50));
+  hand_controller_.setTranslation(ofVec3f(0, -300, -100));
   hand_controller_.setScale(2);
-  particle_system_.setup(ofVec3f(0, 0, -50), ofVec3f(600, 400, 100));
+  particle_system_.setup(ofVec3f(0, 0, -100), ofVec3f(600, 400, 100));
 
   glEnable(GL_NORMALIZE);
 }
@@ -28,7 +28,7 @@ void testApp::update(){
   pinch_list pinches = hand_controller_.getPinches();
   if (pinches.size() > 0) {
     ofVec3f pinch = pinches[0].first;
-    particle_system_.setGravity(pinches[0].first, 1000 * pinches[0].second);
+    particle_system_.setGravity(pinches[0].first, 3000000 * pinches[0].second);
   }
   else
     particle_system_.setGravity(ofVec3f::zero(), 0);

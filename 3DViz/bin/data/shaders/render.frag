@@ -8,4 +8,5 @@ uniform sampler2DRect sparkTex;
 void main() {
     vec2 st = gl_TexCoord[0].st;
     gl_FragColor = texture2DRect(sparkTex, st);
+    gl_FragColor[0] = gl_FragCoord.y / 1000.0;
 }

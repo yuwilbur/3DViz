@@ -18,5 +18,5 @@ void main() {
     //
     
     gl_Position = pixPos;
-    gl_FrontColor =  gl_Color;
+    gl_FrontColor = gl_Color;
 }
