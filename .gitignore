@@ -11,6 +11,6 @@ build
 *.suo
 *.tlog
 *.user
+*.app
 Debug
 Release
-bin
