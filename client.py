@@ -4,6 +4,12 @@ import json
 
 app = Flask(__name__)
 
+@app.route('/')
+def main_handle():
+	return '/images/taylor+swift <br> /events/phish <br> /recommend/feel+so+close'
+
+
+
 @app.route('/images/<artist>')
 def artist_image(artist):
 
@@ -61,23 +67,54 @@ def artist_event(artist):
 
 
 
-	#if len(jamBaseArtists) > 0:
-	firstId = jamBaseArtists[0]['Id']
+	if len(jamBaseArtists) > 0:
+		firstId = jamBaseArtists[0]['Id']
 
-	eventReq = 'http://api.jambase.com/events?artistId=' + str(firstId) + "&page=0&api_key=c39y82cv6zuzqatrvadjxdm3"
-	response, content = h.request(eventReq, "GET")
+		eventReq = 'http://api.jambase.com/events?artistId=' + str(firstId) + "&page=0&api_key=c39y82cv6zuzqatrvadjxdm3"
+		response, content = h.request(eventReq, "GET")
+		data = json.loads(content)
+
+		print eventReq
+
+		events = []
+
+		for event in data['Events']:
+			events.append(event)
+
+		return json.dumps(events)
+	else:
+		return "No artists found on jambase"
+
+@app.route('/recommend/<song>')
+def recommend_song(song):
+	h = httplib2.Http()
+	song = song.replace(' ', '+')
+
+	request = "http://dev.touchtunes.com/music/search?query=" + str(song) + "&api_key=dm6qzugqhamgy2rzwmw3d9j4"
+	response, content = h.request(request, "GET")
 	data = json.loads(content)
 
-	print eventReq
 
-	events = []
 
-	for event in data['Events']:
-		events.append(event)
+	touchTunesSongs = data['response']['result']['songs']
+	print touchTunesSongs
 
-	return json.dumps(events)
-	#else:
-		#return "No artists found on jambase"
+	if len(touchTunesSongs) > 0:
+
+		eventReq = 'http://dev.touchtunes.com/music/recommendations/' + str(touchTunesSongs[0]['id']) + '?api_key=dm6qzugqhamgy2rzwmw3d9j4'
+		response, content = h.request(eventReq, "GET")
+		data = json.loads(content)
+
+		events = []
+
+		for event in data['response']['songs']:
+			events.append(event)
+
+		return json.dumps(events)
+	else:
+		return "No songs found on touch tunes"
+
+
 
 if __name__ == "__main__":
 	app.run()
