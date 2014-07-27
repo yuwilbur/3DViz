@@ -12,17 +12,30 @@
 #include <iostream>
 #include <string.h>
 #include "ofMain.h"
+#include "ofxOpenCv.h"
 
 class ImageInput {
 public:
     ImageInput();
     
-    ofTexture& image(std::string filename);
+    void setup(std::string artist_name);
+    void update_draw_hack();
+    
+    ofTexture color;
     
 private:
 
-    std::string filename_;
-    ofImage image_;
+    std::string str_filename_;
+    ofImage of_img_;
+    ofxCvColorImage cv_color_img_;
+    ofxCvGrayscaleImage cv_grayscale_img_;
+    ofxCvContourFinder cv_contour_finder_;
+    
+    ofTexture grayscale;
+    ofTexture contours;
+    
+    bool drawn_;
+
 };
 
 

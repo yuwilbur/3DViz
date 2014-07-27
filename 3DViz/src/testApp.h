@@ -35,6 +35,5 @@ private:
   HandController hand_controller_;
   ParticleSystem particle_system_;
     
-  ImageInput image_input_;
-  ofTexture image_texture_;
+  ImageInput textures_;
 };
