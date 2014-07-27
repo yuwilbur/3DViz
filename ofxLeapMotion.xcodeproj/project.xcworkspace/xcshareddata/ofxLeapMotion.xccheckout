@@ -5,38 +5,38 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0614FCDE-A67D-4E1C-A39D-7C0C7DAF3402</string>
+	<string>AC058EF7-B1F3-4536-9CF0-C4E05A5A47B3</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ofxLeapMotion</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>AC0FE5D7-7DE9-4A32-A24D-1D3312C9FC26</key>
-		<string>https://github.com/yuwilbur/3DViz</string>
-		<key>FC5943B9-F561-4929-8DAE-44E95EE996F5</key>
-		<string>ssh://github.com/ofTheo/ofxLeapMotion.git</string>
+		<key>16F10AFC-9AA4-4C1E-B1E1-69D6369C9ECD</key>
+		<string>https://github.com/openframeworks/openFrameworks.git</string>
+		<key>E6CF10CF-EC81-4C70-868C-66B8A87E0B00</key>
+		<string>https://github.com/yuwilbur/3DViz.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ofxLeapMotion.xcodeproj/project.xcworkspace</string>
+	<string>apps/devApps/3DViz/ofxLeapMotion.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>AC0FE5D7-7DE9-4A32-A24D-1D3312C9FC26</key>
+		<key>16F10AFC-9AA4-4C1E-B1E1-69D6369C9ECD</key>
+		<string>../../../../..</string>
+		<key>E6CF10CF-EC81-4C70-868C-66B8A87E0B00</key>
 		<string>../..</string>
-		<key>FC5943B9-F561-4929-8DAE-44E95EE996F5</key>
-		<string>../../../../../addons/ofxLeapMotion</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/yuwilbur/3DViz</string>
+	<string>https://github.com/yuwilbur/3DViz.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>AC0FE5D7-7DE9-4A32-A24D-1D3312C9FC26</string>
+	<string>16F10AFC-9AA4-4C1E-B1E1-69D6369C9ECD</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>AC0FE5D7-7DE9-4A32-A24D-1D3312C9FC26</string>
+			<string>E6CF10CF-EC81-4C70-868C-66B8A87E0B00</string>
 			<key>IDESourceControlWCCName</key>
 			<string>3DViz</string>
 		</dict>
@@ -44,9 +44,9 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>FC5943B9-F561-4929-8DAE-44E95EE996F5</string>
+			<string>16F10AFC-9AA4-4C1E-B1E1-69D6369C9ECD</string>
 			<key>IDESourceControlWCCName</key>
-			<string>ofxLeapMotion</string>
+			<string>of</string>
 		</dict>
 	</array>
 </dict>
