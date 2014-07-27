@@ -119,24 +119,25 @@ void AudioPlayer::amplifyColor(ofColor& color) {
 	float amplitude_ratio = average_amplitude_ / amplitude_limit_ * 4;
 	amplitude_ratio = std::min(1.0f, std::max(0.1f, amplitude_ratio));
   
-	float amplitude_offset = max_amplitude_ / amplitude_limit_ * max_value;
+	float amplitude_offset = max_amplitude_ / amplitude_limit_ * max_value/8;
   
-  unsigned char R = color.r;
-  unsigned char G = color.g;
-  unsigned char B = color.b;
+  float R = color.r;
+  float G = color.g;
+  float B = color.b;
 	R = std::max(0.0f, std::min(max_value, R * amplitude_ratio + amplitude_offset));
 	G = std::max(0.0f, std::min(max_value, G * amplitude_ratio + amplitude_offset));
 	B = std::max(0.0f, std::min(max_value, B * amplitude_ratio + amplitude_offset));
-  color.r = R;
-  color.g = G;
-  color.b = B;
+  color.r = (unsigned char)R;
+  color.g = (unsigned char)G;
+  color.b = (unsigned char)B;
+  //std::cout << (int)color.r << " " << (int)color.g << " " << (int)color.b << std::endl;
 }
 
 //--------------------------------------------------------------
 void AudioPlayer::draw(){
 	float total_width = ofGetWidth();
 	// draw the fft resutls:
-	ofSetColor(255,255,255,255); // Draw the bands white
+	ofSetColor(0,0,0,255); // Draw the bands white
 	float width = std::min(10.0f, (float)(total_width) / nBandsToGet);
 	max_amplitude_ = 0;
 	int num_useful_amplitudes = 0;
@@ -147,7 +148,9 @@ void AudioPlayer::draw(){
 		// because the top corner is 0,0)
 		float amplitude = fftSmoothed[i] * 100;
 		amplitude = std::min(amplitude, amplitude_limit_);
-		ofRect(0+i*width,ofGetHeight()/2-amplitude/2,width,amplitude);
+    float visual_amplitude = amplitude * 1.5;
+		ofRect(ofGetWidth()/2+i*width,ofGetHeight()/2-visual_amplitude/2,width,visual_amplitude);
+    ofRect(ofGetWidth()/2-i*width,ofGetHeight()/2-visual_amplitude/2,-width,visual_amplitude);
 		max_amplitude_ = std::max(max_amplitude_, amplitude);
 		
 		if (amplitude> 10.0f) {

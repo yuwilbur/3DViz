@@ -16,6 +16,9 @@ void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
   
   gravity_strength = 0.0;
   gravity_position = ofVec3f::zero();
+  
+  gravity_strength2 = 0.0;
+  gravity_position2 = ofVec3f::zero();
   particleSize = 0.5f;
   timeStep = 0.005f;
   numParticles = 500000;
@@ -125,6 +128,10 @@ void ParticleSystem::update(){
                                              gravity_position.y,
                                              gravity_position.z);
   updateVel.setUniform1f("gravity_strength", gravity_strength);
+  updateVel.setUniform3f("gravity_position2", gravity_position2.x,
+                                              gravity_position2.y,
+                                              gravity_position2.z);
+  updateVel.setUniform1f("gravity_strength2", gravity_strength2);
   
   // draw the source velocity texture to be updated
   velPingPong.src->draw(0, 0);
@@ -192,6 +199,11 @@ void ParticleSystem::update(){
 void ParticleSystem::setGravity(ofVec3f position, float strength) {
   gravity_position = position;
   gravity_strength = strength;
+}
+
+void ParticleSystem::setGravity2(ofVec3f position, float strength) {
+  gravity_position2 = position;
+  gravity_strength2 = strength;
 }
 
 

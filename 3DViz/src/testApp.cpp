@@ -36,19 +36,28 @@ void testApp::update(){
   
   pinch_list pinches = hand_controller_.getPinches();
   if (pinches.size() > 0) {
-    ofVec3f pinch = pinches[0].first;
     particle_system_.setGravity(pinches[0].first, 3000000 * pinches[0].second);
+    
+    if (pinches.size() > 1) {
+      particle_system_.setGravity2(pinches[1].first, 3000000 * pinches[1].second);
+    }
+    else
+      particle_system_.setGravity2(ofVec3f::zero(), 0);
+
   }
-  else
+  else {
     particle_system_.setGravity(ofVec3f::zero(), 0);
+    particle_system_.setGravity2(ofVec3f::zero(), 0);
+  }
   
-  particle_system_.setColor(current_color_);
+  particle_system_.setColor(amped_color_);
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
   ofDisableLighting();
   ofBackgroundGradient(ofColor(70, 70, 70), ofColor(10, 10, 10),  OF_GRADIENT_BAR);
+  audio_player_.draw();
 
   ofSetColor(10);
 

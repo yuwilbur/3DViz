@@ -67,6 +67,7 @@ public:
   void draw();
   
   void setGravity(ofVec3f position, float strength);
+  void setGravity2(ofVec3f position, float strength);
   void setColor(ofColor color) { color_ = color; }
 
   void gotMessage(ofMessage msg);
@@ -92,6 +93,9 @@ public:
   
   ofVec3f gravity_position;
   float gravity_strength;
+  
+  ofVec3f gravity_position2;
+  float gravity_strength2;
   
   ofVec3f center;
   ofVec3f dimensions;
