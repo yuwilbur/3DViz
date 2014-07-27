@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>90839FC4-17F2-4BCA-93F5-D1FDB2FF1EAA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GetRequest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5B72C304-1FDA-40E7-8885-909757A08DC2</key>
+		<string>https://github.com/yuwilbur/3DViz.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GetRequest/GetRequest.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5B72C304-1FDA-40E7-8885-909757A08DC2</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/yuwilbur/3DViz.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5B72C304-1FDA-40E7-8885-909757A08DC2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5B72C304-1FDA-40E7-8885-909757A08DC2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>3DViz</string>
+		</dict>
+	</array>
+</dict>
+</plist>
