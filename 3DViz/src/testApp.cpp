@@ -13,6 +13,8 @@ void testApp::setup(){
   l2.setPosition(-200, -200, 50);
 
   cam.setOrientation(ofPoint(-20, 0, 0));
+  
+  hand_controller_.setTranslation(ofVec3f(0, -50, -50));
 
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_NORMALIZE);
@@ -48,6 +50,8 @@ void testApp::draw(){
 
   m1.begin(); 
   m1.setShininess(0.6);
+  
+  hand_controller_.drawHands();
 
   l2.disable();
 

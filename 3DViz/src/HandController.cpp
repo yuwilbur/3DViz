@@ -35,16 +35,13 @@ pinch_list HandController::getPinches() {
 }
 
 void HandController::drawJoint(const Leap::Vector& joint_position) {
-  /*
-  static const ColorA joint_color(CM_HSV, 0.6, 0.5f, 1.0f, 0.5f);
+  static const ofColor joint_color(0, 0, 255);
   
   glPushMatrix();
   glTranslatef(joint_position.x, joint_position.y, joint_position.z);
   
-  glMaterialfv(GL_FRONT, GL_DIFFUSE, joint_color);
-  gl::drawSphere(ofVec3f::zero(), HAND_SPHERE_RADIUS, HAND_SPHERE_DETAIL);
+  ofDrawSphere(ofVec3f::zero(), HAND_SPHERE_RADIUS);
   glPopMatrix();
-   */
 }
 
 void HandController::drawBone(const Leap::Bone& bone) {
@@ -65,9 +62,8 @@ void HandController::drawBone(const Leap::Bone& bone) {
 }
 
 void HandController::drawHands() {
-  /*
   glPushMatrix();
-  glTranslatef(translation_);
+  glTranslatef(translation_.x, translation_.y, translation_.z);
   glScalef(scale_, scale_, scale_);
   
   Leap::Frame frame = controller_.frame();
@@ -78,7 +74,7 @@ void HandController::drawHands() {
       Leap::Finger finger = hand.fingers()[f];
       
       // Draw first joint inside hand.
-      Leap::Bone mcp = finger.bone(Leap::Bone::Type::TYPE_METACARPAL);
+      Leap::Bone mcp = finger.bone(Leap::Bone::TYPE_METACARPAL);
       drawJoint(mcp.prevJoint());
       
       for (int b = 0; b < 4; ++b) {
@@ -90,5 +86,4 @@ void HandController::drawHands() {
   }
   
   glPopMatrix();
-   */
 }
