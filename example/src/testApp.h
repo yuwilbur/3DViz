@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "Leap.h"
 
-class testApp : public ofBaseApp {
+class testApp : public ofBaseApp{
 
 public:
   void setup();
@@ -27,6 +27,5 @@ private:
   ofLight l1;
   ofLight l2;
   ofMaterial m1;
-  ofCylinderPrimitive cylinder_;
   Leap::Controller controller_;
 };

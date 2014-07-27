@@ -27,7 +27,6 @@ void testApp::drawBone(Leap::Bone bone) {
 
 //--------------------------------------------------------------
 void testApp::draw(){
-  controller_.frame();
   ofDisableLighting();
   ofBackgroundGradient(ofColor(90, 90, 90), ofColor(30, 30, 30),  OF_GRADIENT_BAR);
 
