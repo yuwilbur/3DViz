@@ -16,18 +16,22 @@ void testApp::setup(){
   
   hand_controller_.setTranslation(ofVec3f(0, -150, -50));
   hand_controller_.setScale(2);
+  particle_system_.setup();
 
-  glEnable(GL_DEPTH_TEST);
+  // glEnable(GL_DEPTH_TEST);
   glEnable(GL_NORMALIZE);
 }
 
 
 //--------------------------------------------------------------
 void testApp::update(){
-}
+  particle_system_.update();
+  pinch_list pinches = hand_controller_.getPinches();
+  if (pinches.size() > 0)
+    particle_system_.setGravity(pinches[0].first, 100000 * pinches[0].second);
+  else
+    particle_system_.setGravity(ofVec3f::zero(), 0);
 
-void testApp::drawBone(Leap::Bone bone) {
-  
 }
 
 //--------------------------------------------------------------
@@ -52,12 +56,14 @@ void testApp::draw(){
   m1.begin(); 
   m1.setShininess(0.6);
   
+  ofEnableDepthTest();
   hand_controller_.drawHands();
-
+  ofDisableDepthTest();
   l2.disable();
 
   m1.end();
   cam.end();
+  particle_system_.draw();
 }
 
 //--------------------------------------------------------------

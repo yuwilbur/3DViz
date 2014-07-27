@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "Leap.h"
 #include "HandController.h"
+#include "ParticleSystem.h"
 
 class testApp : public ofBaseApp {
 
@@ -29,5 +30,7 @@ private:
   ofLight l2;
   ofMaterial m1;
   ofCylinderPrimitive cylinder_;
+  
   HandController hand_controller_;
+  ParticleSystem particle_system_;
 };
