@@ -9,7 +9,10 @@
 #include "ParticleSystem.h"
 
 //--------------------------------------------------------------
-void ParticleSystem::setup(){
+void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
+  center = cent;
+  dimensions = dimen;
+  
   gravity_strength = 0.0;
   gravity_position = ofVec3f::zero();
   particleSize = 4.0f;
@@ -46,9 +49,9 @@ void ParticleSystem::setup(){
   for (int x = 0; x < textureRes; x++){
     for (int y = 0; y < textureRes; y++){
       int i = textureRes * y + x;
-      pos[i*3 + 0] = ofRandom(1.0); //x*offset;
-      pos[i*3 + 1] = ofRandom(1.0); //y*offset;
-      pos[i*3 + 2] = ofRandom(-100.0, 100.0);
+      pos[i*3 + 0] = ofRandom(-dimensions.x, dimensions.x); //x*offset;
+      pos[i*3 + 1] = ofRandom(-dimensions.y, dimensions.y); //y*offset;
+      pos[i*3 + 2] = ofRandom(-dimensions.z, dimensions.z);
     }
   }
   // Load this information in to the FBOÔøΩs texture
@@ -117,9 +120,10 @@ void ParticleSystem::update(){
   updateVel.setUniform1i("resolution", (int)textureRes);
   updateVel.setUniform2f("screen", (float)width, (float)height);
   updateVel.setUniform1f("timestep", (float)timeStep);
-  updateVel.setUniform3f("gravity", gravity_position.x,
-                                    gravity_position.y,
-                                    gravity_position.z);
+  updateVel.setUniform3f("gravity_position", gravity_position.x,
+                                             gravity_position.y,
+                                             gravity_position.z);
+  updateVel.setUniform1f("gravity_strength", gravity_strength);
   
   // draw the source velocity texture to be updated
   velPingPong.src->draw(0, 0);

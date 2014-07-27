@@ -26,28 +26,30 @@ void main(void){
 
 
   // If it´s going to collide change the velocity course
-  //
-  if ( nextPos.x < 0.0)
-    vel.x = abs(vel.x);
+  /*
+  if ( nextPos.x < -1.0)
+    vel.x = 0.5 * abs(vel.x);
 
   if ( nextPos.x > 1.0)
-    vel.x = -abs(vel.x);
+    vel.x = 0.5 * -abs(vel.x);
 
-  if (nextPos.y < 0.0)
-    vel.y = abs(vel.y);
+  if (nextPos.y < -1.0)
+    vel.y = 0.5 * abs(vel.y);
 
   if ( nextPos.y > 1.0)
-    vel.y = -abs(vel.y);
+    vel.y = 0.5 * -abs(vel.y);
   
   if ( nextPos.z > 100.0)
     vel.z = -abs(vel.z);
 
   if ( nextPos.z < -100.0)
     vel.z = abs(vel.z);
+    */
 
   vec3 grav_delta = gravity_position - pos;
-  float strength = gravity_strength / (1.0 + length(grav_delta));
+  float strength = 500.0 * gravity_strength / (3000.0 + length(grav_delta));
   vel += strength * normalize(grav_delta);
+  vel *= 0.98;
 
   gl_FragColor = vec4(vel.x,vel.y,vel.z,1.0);   // Then save the vel data into the velocity FBO
 }

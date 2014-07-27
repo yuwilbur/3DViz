@@ -62,7 +62,7 @@ private:
 
 class ParticleSystem {
 public:
-  void setup();
+  void setup(ofVec3f center, ofVec3f dimensions);
   void update();
   void draw();
   
@@ -91,6 +91,9 @@ public:
   
   ofVec3f gravity_position;
   float gravity_strength;
+  
+  ofVec3f center;
+  ofVec3f dimensions;
   
   ofVboMesh mesh;
 };

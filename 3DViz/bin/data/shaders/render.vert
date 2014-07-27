@@ -16,8 +16,6 @@ void main() {
     // Maps the position from the texture (from 0.0 to 1.0) to
     // the screen position (0 - screenWidth/screenHeight)
     //
-    pixPos.x *= screen.x;
-    pixPos.y *= screen.y;
     
     gl_Position = pixPos;
     gl_FrontColor =  gl_Color;
