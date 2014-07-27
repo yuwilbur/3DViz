@@ -28,6 +28,7 @@ class ofApp : public ofBaseApp{
 		float				amplitude_limit_;
 		float				max_amplitude_;
 		float				average_amplitude_;
+		float				prev_average_amplitude_;
 		float				BG_R_;
 		float				BG_G_;
 		float				BG_B_;

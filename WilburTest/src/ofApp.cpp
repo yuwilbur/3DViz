@@ -16,6 +16,8 @@ void ofApp::setup(){
 	}
 
 	amplitude_limit_ = 500.0f;
+	average_amplitude_ = 0.0f;
+	prev_average_amplitude_ = 0.0f;
 	nBandsToGet = 128;
 	BG_R_ = 255;
 	BG_G_ = 0;
@@ -39,8 +41,8 @@ void ofApp::update(){
 		if (fftSmoothed[i] < val[i]) fftSmoothed[i] = val[i];
 		
 	}
+
 	updateColor(BG_R_, BG_G_, BG_B_);
-	
 	float BG_R = BG_R_;
 	float BG_G = BG_G_;
 	float BG_B = BG_B_;
@@ -50,9 +52,9 @@ void ofApp::update(){
 }
 
 void ofApp::updateColor(float& R, float& G, float& B) {
-	float spectrum_increment = 0.25f; 
-	float spectrum_length = 255.0f / spectrum_increment;
 	
+	float spectrum_increment = 0.25f;
+
 	if (R >= 255 && G < 255 && B <= 0) {
 		G += spectrum_increment; // 255,0,0 -> 255,255,0
 	} else if (R > 0 && G >= 255 && B <= 0) {
@@ -88,6 +90,7 @@ void ofApp::draw(){
 	float width = std::min(10.0f, (float)(total_width) / nBandsToGet);
 	max_amplitude_ = 0;
 	int num_useful_amplitudes = 0;
+	prev_average_amplitude_ = average_amplitude_;
 	average_amplitude_ = 0;
 	for (int i = 0;i < nBandsToGet; i++){
 		// (we use negative height here, because we want to flip them
