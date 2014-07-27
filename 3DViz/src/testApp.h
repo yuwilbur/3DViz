@@ -5,6 +5,7 @@
 #include "HandController.h"
 #include "ParticleSystem.h"
 #include "ImageInput.h"
+#include "AudioPlayer.h"
 
 class testApp : public ofBaseApp {
 
@@ -34,6 +35,10 @@ private:
   
   HandController hand_controller_;
   ParticleSystem particle_system_;
+  AudioPlayer audio_player_;
     
   ImageInput textures_;
+ 
+  ofColor current_color_;
+  ofColor amped_color_;
 };

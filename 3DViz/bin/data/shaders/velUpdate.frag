@@ -11,6 +11,9 @@ uniform float timestep;
 
 uniform vec3 gravity_position;
 uniform float gravity_strength;
+uniform vec3 gravity_position2;
+uniform float gravity_strength2;
+uniform float pulse;
 
 void main(void){
   vec2 st = gl_TexCoord[0].st;    // gets the position of the pixel that it´s dealing with...
@@ -24,30 +27,50 @@ void main(void){
   vec3 nextPos = pos;
   nextPos += vel * timestep;
 
-
-  // If it´s going to collide change the velocity course
-  //
-  if ( nextPos.x < 0.0)
-    vel.x = abs(vel.x);
-
-  if ( nextPos.x > 1.0)
-    vel.x = -abs(vel.x);
-
-  if (nextPos.y < 0.0)
-    vel.y = abs(vel.y);
-
-  if ( nextPos.y > 1.0)
-    vel.y = -abs(vel.y);
-  
-  if ( nextPos.z > 100.0)
-    vel.z = -abs(vel.z);
-
-  if ( nextPos.z < -100.0)
-    vel.z = abs(vel.z);
-
+  // Gravity 1
   vec3 grav_delta = gravity_position - pos;
-  float strength = gravity_strength / (1.0 + length(grav_delta));
+  float dist = length(grav_delta);
+  float strength = 0.0;
+  // Attractive force.
+  if (st.x < 300) {
+    strength = gravity_strength / (5000.0 + dist / 2000.0);
+  }
+  else {
+    strength = gravity_strength / (5000.0 + dist * sqrt(dist) / 2000.0);
+  }
+
+  // Repulsive force.
+  if (st.x < 300) {
+    strength -= gravity_strength / (2 + 45 * dist);
+  }
+  else {
+    strength -= gravity_strength / (5.0 + 5 * dist * sqrt(dist));
+  }
+
   vel += strength * normalize(grav_delta);
+
+  // Gravity 2
+  vec3 grav_delta2 = gravity_position2 - pos;
+  float dist2 = length(grav_delta2);
+  float strength2 = 0.0;
+  // Attractive force.
+  if (st.x < 300) {
+    strength2 = gravity_strength2 / (5000.0 + dist2 / 2000.0);
+  }
+  else {
+    strength2 = gravity_strength2 / (5000.0 + dist2 * sqrt(dist2) / 2000.0);
+  }
+
+  // Repulsive force.
+  if (st.x < 300) {
+    strength2 -= gravity_strength2 / (2 + 45 * dist2);
+  }
+  else {
+    strength2 -= gravity_strength2 / (5.0 + 5 * dist2 * sqrt(dist2));
+  }
+
+  vel += strength2 * normalize(grav_delta2);
+  vel *= 0.985;
 
   gl_FragColor = vec4(vel.x,vel.y,vel.z,1.0);   // Then save the vel data into the velocity FBO
 }

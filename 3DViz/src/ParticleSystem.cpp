@@ -9,12 +9,20 @@
 #include "ParticleSystem.h"
 
 //--------------------------------------------------------------
-void ParticleSystem::setup(){
+void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
+  bass_amplitude_ = 0.0;
+  center = cent;
+  dimensions = dimen;
+  color_ = ofColor(1, 0, 0, 1);
+  
   gravity_strength = 0.0;
   gravity_position = ofVec3f::zero();
-  particleSize = 4.0f;
+  
+  gravity_strength2 = 0.0;
+  gravity_position2 = ofVec3f::zero();
+  particleSize = 0.6f;
   timeStep = 0.005f;
-  numParticles = 100000;
+  numParticles = 500000;
   
   // Width and Heigth of the windows
   width = ofGetWindowWidth();
@@ -46,9 +54,9 @@ void ParticleSystem::setup(){
   for (int x = 0; x < textureRes; x++){
     for (int y = 0; y < textureRes; y++){
       int i = textureRes * y + x;
-      pos[i*3 + 0] = ofRandom(1.0); //x*offset;
-      pos[i*3 + 1] = ofRandom(1.0); //y*offset;
-      pos[i*3 + 2] = ofRandom(-100.0, 100.0);
+      pos[i*3 + 0] = ofRandom(-dimensions.x, dimensions.x); //x*offset;
+      pos[i*3 + 1] = ofRandom(-dimensions.y, dimensions.y); //y*offset;
+      pos[i*3 + 2] = ofRandom(-dimensions.z, dimensions.z);
     }
   }
   // Load this information in to the FBOÔøΩs texture
@@ -117,9 +125,14 @@ void ParticleSystem::update(){
   updateVel.setUniform1i("resolution", (int)textureRes);
   updateVel.setUniform2f("screen", (float)width, (float)height);
   updateVel.setUniform1f("timestep", (float)timeStep);
-  updateVel.setUniform3f("gravity", gravity_position.x,
-                                    gravity_position.y,
-                                    gravity_position.z);
+  updateVel.setUniform3f("gravity_position", gravity_position.x,
+                                             gravity_position.y,
+                                             gravity_position.z);
+  updateVel.setUniform1f("gravity_strength", gravity_strength);
+  updateVel.setUniform3f("gravity_position2", gravity_position2.x,
+                                              gravity_position2.y,
+                                              gravity_position2.z);
+  updateVel.setUniform1f("gravity_strength2", gravity_strength2);
   
   // draw the source velocity texture to be updated
   velPingPong.src->draw(0, 0);
@@ -140,6 +153,7 @@ void ParticleSystem::update(){
   updatePos.setUniformTexture("prevPosData", posPingPong.src->getTextureReference(), 0); // Previus position
   updatePos.setUniformTexture("velData", velPingPong.src->getTextureReference(), 1);  // Velocity
   updatePos.setUniform1f("timestep",(float) timeStep );
+  updatePos.setUniform1f("pulse", bass_amplitude_);
   
   // draw the source position texture to be updated
   posPingPong.src->draw(0, 0);
@@ -189,15 +203,24 @@ void ParticleSystem::setGravity(ofVec3f position, float strength) {
   gravity_strength = strength;
 }
 
+void ParticleSystem::setGravity2(ofVec3f position, float strength) {
+  gravity_position2 = position;
+  gravity_strength2 = strength;
+}
+
 
 //--------------------------------------------------------------
 void ParticleSystem::draw(){
   // ofBackground(0);
+  static const float min_color = 10.0f;
   
-  ofSetColor(100,255,255);
   updateRender.begin();
   updateRender.setUniformTexture("posTex", posPingPong.dst->getTextureReference(), 0);
   updateRender.setUniformTexture("sparkTex", sparkImg.getTextureReference() , 1);
+  float r = std::max<float>(color_.r, min_color);
+  float g = std::max<float>(color_.g, min_color);
+  float b = std::max<float>(color_.b, min_color);
+  updateRender.setUniform4f("color", r, g, b, 255.0f);
   updateRender.setUniform1i("resolution", (float)textureRes);
   updateRender.setUniform2f("screen", (float)width, (float)height);
   updateRender.setUniform1f("size", (float)particleSize);
@@ -215,7 +238,4 @@ void ParticleSystem::draw(){
   
   updateRender.end();
   ofPopStyle();
-  
-  ofSetColor(255);
-  ofDrawBitmapString("Fps: " + ofToString( ofGetFrameRate()), 15,15);
 }
