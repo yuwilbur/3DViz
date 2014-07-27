@@ -20,6 +20,8 @@ void testApp::setup(){
 
   // glEnable(GL_DEPTH_TEST);
   glEnable(GL_NORMALIZE);
+    
+  image_texture_ = image_input_.image("boards_of_canada.jpg");
 }
 
 
