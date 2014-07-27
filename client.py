@@ -1,18 +1,43 @@
 import httplib2
+from flask import Flask
 import json
 
-h = httplib2.Http()
+app = Flask(__name__)
 
-response, content = h.request("http://localhost:5000/", "GET")
+@app.route('/images/<artist>')
+def artist_image(artist):
 
-print 'Hello World GET Request:'
-print '\tresponse', response
-print '\tcontent', content
+	h = httplib2.Http()
 
-response, content = h.request("http://localhost:5000/images/Boards_of_Canada", "GET")
-data = json.loads(content)
+	request = "http://api.openaura.com/v1/search/artists?q=" + artist + "?q=taylor&api_key=outside-hacks"
 
-print '\nExample Artist Image GET Request:'
-print '\tresponse', response
-print '\tcontent', content
-print '\tArtist Name Returned', data['artist']
+	response, content = h.request(request, "GET")
+	data = json.loads(content)
+
+	print 'Hello World GET Request:'
+	print '\tresponse', response
+	print '\tcontent', content
+
+	artists = []
+
+	for artist in data:
+		artists.append(artist)
+
+	request = "http://api.openaura.com/v1/classic/artists/" + artists[0]['oa_artist_id'] + "?id_type=oa%3Aartist_id&api_key=outside-hacks"
+
+	response, content = h.request(request, "GET")
+	data = json.loads(content)
+
+	artistImages = data['artist_images']
+
+	imageUrls = []
+
+	for image in artistImages:
+		imageUrls.append(image['url'])
+
+	print imageUrls
+
+	return json.dumps(imageUrls)
+
+if __name__ == "__main__":
+	app.run()
