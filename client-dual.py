@@ -17,7 +17,7 @@ def artist_image(artist):
 
 	artist = artist.replace(' ', '+')
 
-	request = "http://api.openaura.com/v1/search/artists?q=" + str(artist) + "?q=taylor&api_key=outside-hacks"
+	request = "http://api.openaura.com/v1/search/artists?q=" + str(artist) + "&api_key=outside-hacks"
 
 	response, content = h.request(request, "GET")
 	data = json.loads(content)
