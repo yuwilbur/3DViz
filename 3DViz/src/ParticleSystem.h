@@ -9,6 +9,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ImageInput.h"
 
 // Struct for doing PingPong quickly and easy
 //
@@ -105,4 +106,7 @@ public:
   
   ofVboMesh mesh;
   ofColor color_;
+  
+  ImageInput image_input_;
+  ofTexture image_texture_;
 };

@@ -21,8 +21,6 @@ void testApp::setup(){
   audio_player_.setup();
 
   glEnable(GL_NORMALIZE);
-    
-  image_texture_ = image_input_.image("boards_of_canada.jpg");
 }
 
 
