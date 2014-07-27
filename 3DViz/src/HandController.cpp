@@ -29,7 +29,7 @@ pinch_list HandController::getPinches() {
 }
 
 void HandController::drawJoint(const Leap::Vector& joint_position) {
-  static const ofColor joint_color(0, 0, 255);
+  ofSetColor(255, 255, 255);
   
   glPushMatrix();
   glTranslatef(joint_position.x, joint_position.y, joint_position.z);
@@ -39,7 +39,7 @@ void HandController::drawJoint(const Leap::Vector& joint_position) {
 }
 
 void HandController::drawBone(const Leap::Bone& bone) {
-  static const ofColor joint_color(0, 0, 255);
+  ofSetColor(255, 255, 255);
   
   Leap::Vector midpoint = (bone.prevJoint() + bone.prevJoint()) / 2.0;
   
