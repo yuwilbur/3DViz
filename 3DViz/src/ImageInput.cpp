@@ -13,7 +13,7 @@ ImageInput::ImageInput() : drawn_(false) {}
 void ImageInput::setup(std::string artist_name) {
     //ofPushStyle();
     // TODO get an image related to artist_name
-    str_filename_ = "boards_of_canada.jpg";
+    str_filename_ = "album_art.jpg";
     of_img_.loadImage(str_filename_);
     color = of_img_.getTextureReference();
     
