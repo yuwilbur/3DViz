@@ -41,14 +41,10 @@ void ofApp::update(){
 	}
 	updateColor(BG_R_, BG_G_, BG_B_);
 	
-	float amplitude_ratio = average_amplitude_ / amplitude_limit_ * 4;
-	amplitude_ratio = std::min(1.0f, std::max(0.1f, amplitude_ratio));
-
-	float amplitude_offset = max_amplitude_ / amplitude_limit_ * 255;
-
-	float BG_R = std::max(0.0f, std::min(255.0f, BG_R_ * amplitude_ratio + amplitude_offset));
-	float BG_G = std::max(0.0f, std::min(255.0f, BG_G_ * amplitude_ratio + amplitude_offset));
-	float BG_B = std::max(0.0f, std::min(255.0f, BG_B_ * amplitude_ratio + amplitude_offset));
+	float BG_R = BG_R_;
+	float BG_G = BG_G_;
+	float BG_B = BG_B_;
+	amplifyColor(BG_R, BG_G, BG_B);
 
 	ofBackground(BG_R,BG_G,BG_B);
 }
@@ -70,6 +66,18 @@ void ofApp::updateColor(float& R, float& G, float& B) {
 	} else if (R >= 255 && G <= 0 && B > 0) {
 		B -= spectrum_increment; // 255,0,255 -> 255,0,0
 	}
+}
+
+void ofApp::amplifyColor(float& R, float& G, float& B) {
+	float amplitude_ratio = average_amplitude_ / amplitude_limit_ * 4;
+	amplitude_ratio = std::min(1.0f, std::max(0.1f, amplitude_ratio));
+
+	float amplitude_offset = max_amplitude_ / amplitude_limit_ * 255;
+
+	R = std::max(0.0f, std::min(255.0f, R * amplitude_ratio + amplitude_offset));
+	G = std::max(0.0f, std::min(255.0f, G * amplitude_ratio + amplitude_offset));
+	B = std::max(0.0f, std::min(255.0f, B * amplitude_ratio + amplitude_offset));
+
 }
 
 //--------------------------------------------------------------

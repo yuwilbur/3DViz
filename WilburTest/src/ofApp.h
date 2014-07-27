@@ -10,6 +10,7 @@ class ofApp : public ofBaseApp{
 		void draw();
 
 		void updateColor(float& R, float& G, float& B);
+		void amplifyColor(float& R, float& G, float& B);
 
 		void keyPressed  (int key);
 		void keyReleased(int key);

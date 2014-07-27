@@ -11,6 +11,7 @@ build
 *.suo
 *.tlog
 *.user
+*.opensdf
 Debug
 Release
 bin
