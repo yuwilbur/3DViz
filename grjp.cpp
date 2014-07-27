@@ -3,7 +3,7 @@
 //  GetRequest
 //
 //  Created by Anson Liu on 7/27/14.
-//  Copyright (c) 2014 Apparent Etch. All rights reserved.
+//  Such hardcoded fun
 //
 
 #include <iostream>
