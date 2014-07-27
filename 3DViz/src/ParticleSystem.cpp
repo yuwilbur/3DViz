@@ -12,6 +12,7 @@
 void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
   center = cent;
   dimensions = dimen;
+  color_ = ofColor(1, 0, 0, 1);
   
   gravity_strength = 0.0;
   gravity_position = ofVec3f::zero();
@@ -197,11 +198,15 @@ void ParticleSystem::setGravity(ofVec3f position, float strength) {
 //--------------------------------------------------------------
 void ParticleSystem::draw(){
   // ofBackground(0);
+  static const float min_color = 10.0f;
   
-  ofSetColor(100,255,255);
   updateRender.begin();
   updateRender.setUniformTexture("posTex", posPingPong.dst->getTextureReference(), 0);
   updateRender.setUniformTexture("sparkTex", sparkImg.getTextureReference() , 1);
+  float r = std::max<float>(color_.r, min_color);
+  float g = std::max<float>(color_.g, min_color);
+  float b = std::max<float>(color_.b, min_color);
+  updateRender.setUniform4f("color", r, g, b, 255.0f);
   updateRender.setUniform1i("resolution", (float)textureRes);
   updateRender.setUniform2f("screen", (float)width, (float)height);
   updateRender.setUniform1f("size", (float)particleSize);
@@ -219,7 +224,4 @@ void ParticleSystem::draw(){
   
   updateRender.end();
   ofPopStyle();
-  
-  ofSetColor(255);
-  ofDrawBitmapString("Fps: " + ofToString( ofGetFrameRate()), 15,15);
 }

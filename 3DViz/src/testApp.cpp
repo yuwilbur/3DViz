@@ -5,6 +5,7 @@ using namespace Leap;
 
 void testApp::setup(){
 
+  current_color_ = ofColor(255, 0, 0, 1);
   ofSetFrameRate(60);
   ofSetVerticalSync(true);
   ofSetLogLevel(OF_LOG_VERBOSE);
@@ -17,6 +18,7 @@ void testApp::setup(){
   hand_controller_.setTranslation(ofVec3f(0, -300, -100));
   hand_controller_.setScale(2);
   particle_system_.setup(ofVec3f(0, 0, -100), ofVec3f(600, 400, 100));
+  audio_player_.setup();
 
   glEnable(GL_NORMALIZE);
     
@@ -27,6 +29,11 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
   particle_system_.update();
+  audio_player_.update();
+  audio_player_.updateColor(current_color_);
+  amped_color_ = current_color_;
+  audio_player_.amplifyColor(amped_color_);
+  
   pinch_list pinches = hand_controller_.getPinches();
   if (pinches.size() > 0) {
     ofVec3f pinch = pinches[0].first;
@@ -34,22 +41,22 @@ void testApp::update(){
   }
   else
     particle_system_.setGravity(ofVec3f::zero(), 0);
-
+  
+  particle_system_.setColor(current_color_);
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
   ofDisableLighting();
-  ofBackgroundGradient(ofColor(90, 90, 90), ofColor(30, 30, 30),  OF_GRADIENT_BAR);
+  ofBackgroundGradient(ofColor(70, 70, 70), ofColor(10, 10, 10),  OF_GRADIENT_BAR);
 
-  ofSetColor(200);
+  ofSetColor(10);
 
   cam.begin();	
 
   ofPushMatrix();
   ofRotate(90, 0, 0, 1);
-  ofSetColor(20);
-  ofDrawGridPlane(800, 20, false);
+  ofSetColor(0);
   ofPopMatrix();
 
   ofEnableLighting();

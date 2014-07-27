@@ -67,6 +67,7 @@ public:
   void draw();
   
   void setGravity(ofVec3f position, float strength);
+  void setColor(ofColor color) { color_ = color; }
 
   void gotMessage(ofMessage msg);
   
@@ -96,4 +97,5 @@ public:
   ofVec3f dimensions;
   
   ofVboMesh mesh;
+  ofColor color_;
 };
