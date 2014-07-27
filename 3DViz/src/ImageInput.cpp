@@ -17,6 +17,7 @@ void ImageInput::setup(std::string artist_name) {
     of_img_.loadImage(str_filename_);
     color = of_img_.getTextureReference();
     
+    /*
     int w = of_img_.getWidth();
     int h = of_img_.getHeight();
     cv_color_img_.allocate(w, h);
@@ -32,8 +33,10 @@ void ImageInput::setup(std::string artist_name) {
     //cv_contour_finder_.draw();
 
     contours.allocate(w, h, GL_RGB);
+     */
 }
 
+/*
 void ImageInput::update_draw_hack() {
     if (drawn_) {
         return;
@@ -45,5 +48,5 @@ void ImageInput::update_draw_hack() {
     contours.loadScreenData(400, 50, 100, 100);
     glPopMatrix();
     drawn_ = true;
-}
+}*/
 

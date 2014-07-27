@@ -12,7 +12,6 @@
 #include <iostream>
 #include <string.h>
 #include "ofMain.h"
-#include "ofxOpenCv.h"
 
 class ImageInput {
 public:
