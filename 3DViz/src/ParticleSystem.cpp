@@ -10,7 +10,8 @@
 
 //--------------------------------------------------------------
 void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
-  image_texture_ = image_input_.image("boards_of_canada.jpg");
+  textures_.setup("Boards of Canada");
+
   bass_amplitude_ = 0.0;
   center = cent;
   dimensions = dimen;
@@ -219,7 +220,7 @@ void ParticleSystem::draw(){
   updateRender.begin();
   updateRender.setUniformTexture("posTex", posPingPong.dst->getTextureReference(), 0);
   updateRender.setUniformTexture("sparkTex", sparkImg.getTextureReference() , 1);
-  updateRender.setUniformTexture("albumArt", image_texture_, 2);
+  updateRender.setUniformTexture("albumArt", textures_.color, 2);
 
   float r = std::max<float>(color_.r, min_color);
   float g = std::max<float>(color_.g, min_color);

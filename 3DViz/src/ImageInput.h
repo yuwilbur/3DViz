@@ -17,12 +17,21 @@ class ImageInput {
 public:
     ImageInput();
     
-    ofTexture& image(std::string filename);
+    void setup(std::string artist_name);
+    void update_draw_hack();
+    
+    ofTexture color;
     
 private:
 
-    std::string filename_;
-    ofImage image_;
+    std::string str_filename_;
+    ofImage of_img_;
+    
+    ofTexture grayscale;
+    ofTexture contours;
+    
+    bool drawn_;
+
 };
 
 

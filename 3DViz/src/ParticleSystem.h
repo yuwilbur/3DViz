@@ -107,6 +107,5 @@ public:
   ofVboMesh mesh;
   ofColor color_;
   
-  ImageInput image_input_;
-  ofTexture image_texture_;
+  ImageInput textures_;
 };
