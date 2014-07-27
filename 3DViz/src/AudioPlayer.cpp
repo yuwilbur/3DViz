@@ -11,7 +11,7 @@
 
 //--------------------------------------------------------------
 void AudioPlayer::setup() {
-  
+  bass_amplitude_ = 0.0;
 	// load in sounds:
 	input_music_.loadSound("sounds/Journeyman.mp3");
 	input_music_.play();
@@ -26,7 +26,7 @@ void AudioPlayer::setup() {
 	amplitude_limit_ = 500.0f;
 	average_amplitude_ = 0.0f;
 	prev_average_amplitude_ = 0.0f;
-	nBandsToGet = 128;
+	nBandsToGet = 512;
 	BG_R_ = 255;
 	BG_G_ = 0;
 	BG_B_ = 0;
@@ -135,6 +135,9 @@ void AudioPlayer::amplifyColor(ofColor& color) {
 
 //--------------------------------------------------------------
 void AudioPlayer::draw(){
+  static const int bass_bands = 10;
+  bass_amplitude_ = 0.0;
+  
 	float total_width = ofGetWidth();
 	// draw the fft resutls:
 	ofSetColor(0,0,0,255); // Draw the bands white
@@ -146,7 +149,9 @@ void AudioPlayer::draw(){
 	for (int i = 0;i < nBandsToGet; i++){
 		// (we use negative height here, because we want to flip them
 		// because the top corner is 0,0)
-		float amplitude = fftSmoothed[i] * 100;
+		float amplitude = fftSmoothed[i] * 200;
+    if (i < bass_bands)
+      bass_amplitude_ += amplitude / 5120.0;
 		amplitude = std::min(amplitude, amplitude_limit_);
     float visual_amplitude = amplitude * 1.5;
 		ofRect(ofGetWidth()/2+i*width,ofGetHeight()/2-visual_amplitude/2,width,visual_amplitude);
@@ -161,4 +166,5 @@ void AudioPlayer::draw(){
 	if (num_useful_amplitudes > 0) {
 		average_amplitude_ /= num_useful_amplitudes;
 	}
+  bass_amplitude_ *= bass_amplitude_;
 }

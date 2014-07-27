@@ -69,6 +69,7 @@ public:
   void setGravity(ofVec3f position, float strength);
   void setGravity2(ofVec3f position, float strength);
   void setColor(ofColor color) { color_ = color; }
+  void setBassAmplitude(float amp) { bass_amplitude_ = amp; }
 
   void gotMessage(ofMessage msg);
   
@@ -96,6 +97,8 @@ public:
   
   ofVec3f gravity_position2;
   float gravity_strength2;
+  
+  float bass_amplitude_;
   
   ofVec3f center;
   ofVec3f dimensions;

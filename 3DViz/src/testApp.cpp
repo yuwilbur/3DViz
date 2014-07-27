@@ -28,11 +28,12 @@ void testApp::setup(){
 
 //--------------------------------------------------------------
 void testApp::update(){
-  particle_system_.update();
   audio_player_.update();
   audio_player_.updateColor(current_color_);
   amped_color_ = current_color_;
   audio_player_.amplifyColor(amped_color_);
+  particle_system_.setBassAmplitude(audio_player_.getBassAmplitude());
+  particle_system_.update();
   
   pinch_list pinches = hand_controller_.getPinches();
   if (pinches.size() > 0) {

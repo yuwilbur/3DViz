@@ -20,6 +20,7 @@ public:
   void updateColor(ofColor& color);
   void amplifyColor(float& R, float& G, float& B);
   void amplifyColor(ofColor& color);
+  float getBassAmplitude() { return bass_amplitude_; }
     
   ofSoundPlayer input_music_;
   
@@ -31,6 +32,7 @@ public:
   float	BG_R_;
   float	BG_G_;
   float	BG_B_;
+  float bass_amplitude_;
   
   int nBandsToGet;
 };

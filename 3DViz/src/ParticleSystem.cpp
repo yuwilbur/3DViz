@@ -10,6 +10,7 @@
 
 //--------------------------------------------------------------
 void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
+  bass_amplitude_ = 0.0;
   center = cent;
   dimensions = dimen;
   color_ = ofColor(1, 0, 0, 1);
@@ -19,7 +20,7 @@ void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
   
   gravity_strength2 = 0.0;
   gravity_position2 = ofVec3f::zero();
-  particleSize = 0.5f;
+  particleSize = 0.6f;
   timeStep = 0.005f;
   numParticles = 500000;
   
@@ -152,6 +153,7 @@ void ParticleSystem::update(){
   updatePos.setUniformTexture("prevPosData", posPingPong.src->getTextureReference(), 0); // Previus position
   updatePos.setUniformTexture("velData", velPingPong.src->getTextureReference(), 1);  // Velocity
   updatePos.setUniform1f("timestep",(float) timeStep );
+  updatePos.setUniform1f("pulse", bass_amplitude_);
   
   // draw the source position texture to be updated
   posPingPong.src->draw(0, 0);

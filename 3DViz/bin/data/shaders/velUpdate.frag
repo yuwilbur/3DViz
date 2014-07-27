@@ -13,6 +13,7 @@ uniform vec3 gravity_position;
 uniform float gravity_strength;
 uniform vec3 gravity_position2;
 uniform float gravity_strength2;
+uniform float pulse;
 
 void main(void){
   vec2 st = gl_TexCoord[0].st;    // gets the position of the pixel that it´s dealing with...
@@ -69,7 +70,7 @@ void main(void){
   }
 
   vel += strength2 * normalize(grav_delta2);
-  vel *= 0.96;
+  vel *= 0.985;
 
   gl_FragColor = vec4(vel.x,vel.y,vel.z,1.0);   // Then save the vel data into the velocity FBO
 }
