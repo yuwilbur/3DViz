@@ -17,7 +17,7 @@ def artist_image(artist):
 
 	artist = artist.replace(' ', '+')
 
-	request = "http://api.openaura.com/v1/search/artists?q=" + str(artist) + "?q=taylor&api_key=outside-hacks"
+	request = "http://api.openaura.com/v1/search/artists?q=" + str(artist) + "&api_key=outside-hacks"
 
 	response, content = h.request(request, "GET")
 	data = json.loads(content)
@@ -27,23 +27,47 @@ def artist_image(artist):
 	for artist in data:
 		artists.append(artist)
 
-	print artists
-
 	if len(artists) > 0:
 		#request = "http://api.openaura.com/v1/classic/artists/" + artists[0]['oa_artist_id'] + "?id_type=oa%3Aartist_id&api_key=outside-hacks"
 		request = "http://api.openaura.com/v1/stream/artists/" + str(artists[0]['oa_artist_id']) + "?limit=10&id_type=oa:artist_id&api_key=zlA809tV1FCxCb55n5ei0mSmbtHgvpJe"
 
+		print request
+
 		response, content = h.request(request, "GET")
 		data = json.loads(content)
 
-		particles = data['particles']
+		particles = []
+
+		if 'cover_photo' in data:
+			for obj in data['cover_photo']:
+				particles.append(obj)
+
+		if 'artist_images' in data:
+			for obj in data['artist_images']:
+				particles.append(obj)
+
+		if 'particles' in data:
+			for obj in data['particles']:
+				particles.append(obj)
+
+		#print particles
 
 		imageUrls = []
 
 		for particle in particles:
-			media = particle['media']
-			if len(media) > 0:
-				imageUrls.append(media[len(media) - 1])
+
+
+			if 'media' in particle:
+				media = particle['media']
+				if len(media) > 0:
+					imageUrls.append(media[len(media) - 1])
+
+			elif 'url' in particle:
+				url = particle['url']
+				imageUrls.append(particle)
+
+			else:
+				print 'no url found', particle
 
 		return json.dumps(imageUrls)
 	else:
