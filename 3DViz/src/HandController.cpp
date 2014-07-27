@@ -7,12 +7,6 @@
 
 namespace {
   
-  ofMatrix4x4 GetBoneMatrix(const Leap::Bone& bone) {
-    float matrix_values[16];
-    bone.basis().toArray4x4(matrix_values);
-    return ofMatrix4x4(matrix_values);
-  }
-  
   ofVec3f ToVec3f(const Leap::Vector& vector) {
     return ofVec3f(vector.x, vector.y, vector.z);
   }
@@ -45,20 +39,20 @@ void HandController::drawJoint(const Leap::Vector& joint_position) {
 }
 
 void HandController::drawBone(const Leap::Bone& bone) {
-  /*
-  static const ColorA bone_color(CM_HSV, 0.5f, 0.0f, 1.0f, 0.5f);
+  static const ofColor joint_color(0, 0, 255);
   
   Leap::Vector midpoint = (bone.prevJoint() + bone.prevJoint()) / 2.0;
   
   glPushMatrix();
   glTranslatef(midpoint.x, midpoint.y, midpoint.z);
-  glMultMatrixf(GetBoneMatrix(bone));
+  
+  float matrix_values[16];
+  bone.basis().toArray4x4(matrix_values);
+  glMultMatrixf(matrix_values);
   glRotatef(90, -1, 0, 0);
   
-  glMaterialfv(GL_FRONT, GL_DIFFUSE, bone_color);
-  gl::drawCylinder(HAND_CYLINDER_RADIUS, HAND_CYLINDER_RADIUS, bone.length(), 12, 1);
+  ofDrawCylinder(0, bone.length() / 2.0, HAND_CYLINDER_RADIUS, bone.length());
   glPopMatrix();
-   */
 }
 
 void HandController::drawHands() {

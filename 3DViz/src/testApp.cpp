@@ -14,7 +14,8 @@ void testApp::setup(){
 
   cam.setOrientation(ofPoint(-20, 0, 0));
   
-  hand_controller_.setTranslation(ofVec3f(0, -50, -50));
+  hand_controller_.setTranslation(ofVec3f(0, -150, -50));
+  hand_controller_.setScale(2);
 
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_NORMALIZE);
