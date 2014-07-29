@@ -40,6 +40,8 @@ void Settings::update() {
 }
 
 void Settings::draw() {
+  ofShowCursor();
+
   ofPushStyle();
   ofDisableLighting();
   ofSetColor(255, 255, 255, 255);
@@ -56,6 +58,7 @@ void Settings::draw() {
 }
 
 void Settings::onClick(ofMouseEventArgs &m) {
+  std::cout << "CLICK" << std::endl;
   for (vector<stage>::iterator it = stages_.begin(); it != stages_.end(); it++) {
     if (ofDist(m.x, m.y, it->x, it->y) < r_) {
       if (selected_ != NULL && selected_->name == it->name) {

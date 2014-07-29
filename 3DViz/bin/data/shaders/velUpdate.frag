@@ -4,6 +4,7 @@
 
 uniform sampler2DRect backbuffer;   // recive the previus velocity texture
 uniform sampler2DRect posData;      // recive the position texture
+uniform sampler2DRect restingPosData;
 
 uniform vec2  screen;
 
@@ -19,6 +20,7 @@ void main(void){
   vec2 st = gl_TexCoord[0].st;    // gets the position of the pixel that it´s dealing with...
 
   vec3 pos = texture2DRect( posData, st).xyz;      // ... for gettinh the position data 
+  vec3 resting_pos = texture2DRect( restingPosData, st).xyz;      // ... for gettinh the position data 
   vec3 vel = texture2DRect( backbuffer, st ).xyz;  // and the velocity
 
   // Calculates what´s going to be the next position without updating it.
@@ -70,6 +72,11 @@ void main(void){
   }
 
   vel += strength2 * normalize(grav_delta2);
+
+  // Pull back force.
+  vec3 pull_delta = resting_pos - pos;
+  vel += pull_delta / 1000.0;
+
   vel *= 0.985;
 
   gl_FragColor = vec4(vel.x,vel.y,vel.z,1.0);   // Then save the vel data into the velocity FBO

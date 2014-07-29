@@ -193,12 +193,12 @@
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		D107666619847DB3009E74CC /* HandController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HandController.cpp; sourceTree = "<group>"; };
 		D107666719847DB3009E74CC /* HandController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandController.h; sourceTree = "<group>"; };
-		D17054261984D43200A3B6D4 /* ofxLeapMotionExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ofxLeapMotionExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17054271984D45700A3B6D4 /* ParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleSystem.cpp; sourceTree = "<group>"; };
 		D17054281984D45700A3B6D4 /* ParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleSystem.h; sourceTree = "<group>"; };
 		D170542A1984D6E100A3B6D4 /* libLeap.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libLeap.dylib; path = libs/lib/osx/libLeap.dylib; sourceTree = "<group>"; };
 		D1859B351985118600D09386 /* AudioPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioPlayer.cpp; sourceTree = "<group>"; };
 		D1859B361985118600D09386 /* AudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayer.h; sourceTree = "<group>"; };
+		D1D04B8B1986D4CC00287685 /* ofxLeapMotionExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ofxLeapMotionExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -594,7 +594,7 @@
 				14B454A21984F37000E280FE /* addons */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				D17054261984D43200A3B6D4 /* ofxLeapMotionExampleDebug.app */,
+				D1D04B8B1986D4CC00287685 /* ofxLeapMotionExampleDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -649,7 +649,7 @@
 			);
 			name = ofxLeapMotionExample;
 			productName = myOFApp;
-			productReference = D17054261984D43200A3B6D4 /* ofxLeapMotionExampleDebug.app */;
+			productReference = D1D04B8B1986D4CC00287685 /* ofxLeapMotionExampleDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
