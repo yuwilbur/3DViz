@@ -4,7 +4,8 @@
 using namespace Leap;
 
 void testApp::setup(){
-
+  ofSetFullscreen(true);
+  ofHideCursor();
   current_color_ = ofColor(255, 0, 0, 1);
   ofSetFrameRate(60);
   ofSetVerticalSync(true);
@@ -15,9 +16,9 @@ void testApp::setup(){
 
   cam.setOrientation(ofPoint(-20, 0, 0));
   
-  hand_controller_.setTranslation(ofVec3f(0, -300, -100));
+  hand_controller_.setTranslation(ofVec3f(0, -500, -100));
   hand_controller_.setScale(2);
-  particle_system_.setup(ofVec3f(0, 0, -100), ofVec3f(600, 400, 100));
+  particle_system_.setup(ofVec3f(0, 0, -100), ofVec3f(800, 600, 200));
   audio_player_.setup();
 
   glEnable(GL_NORMALIZE);
@@ -30,7 +31,7 @@ void testApp::update(){
   audio_player_.updateColor(current_color_);
   amped_color_ = current_color_;
   audio_player_.amplifyColor(amped_color_);
-  particle_system_.setBassAmplitude(audio_player_.getBassAmplitude());
+  particle_system_.setBassAmplitude(audio_player_.getBassAmplitude() - 0.05);
   particle_system_.update();
   
   pinch_list pinches = hand_controller_.getPinches();
@@ -55,7 +56,8 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
   ofDisableLighting();
-  ofBackgroundGradient(ofColor(70, 70, 70), ofColor(10, 10, 10),  OF_GRADIENT_BAR);
+  float gradient = audio_player_.getBassAmplitude()*200+45;
+  ofBackgroundGradient(ofColor(gradient, gradient, gradient), ofColor(0, 0, 0),  OF_GRADIENT_BAR);
   audio_player_.draw();
 
   ofSetColor(10);

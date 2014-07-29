@@ -10,9 +10,12 @@
 
 //--------------------------------------------------------------
 void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
+  interpolation_ = 1.0;
   textures_.setup("Boards of Canada");
 
   bass_amplitude_ = 0.0;
+  dc_filtered_bass_ = 0.0;
+
   center = cent;
   dimensions = dimen;
   color_ = ofColor(1, 0, 0, 1);
@@ -22,7 +25,7 @@ void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
   
   gravity_strength2 = 0.0;
   gravity_position2 = ofVec3f::zero();
-  particleSize = 0.6f;
+  particleSize = 0.9f;
   timeStep = 0.005f;
   numParticles = 500000;
   
@@ -52,20 +55,26 @@ void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
   numParticles = textureRes * textureRes;
   
   // 1. Making arrays of float pixels with position information
+  float * resting_pos = new float[numParticles*3];
   float * pos = new float[numParticles*3];
   for (int x = 0; x < textureRes; x++){
     for (int y = 0; y < textureRes; y++){
       int i = textureRes * y + x;
-      pos[i*3 + 0] = ofRandom(-dimensions.x, dimensions.x); //x*offset;
-      pos[i*3 + 1] = ofRandom(-dimensions.y, dimensions.y); //y*offset;
-      pos[i*3 + 2] = ofRandom(-dimensions.z, dimensions.z);
+      resting_pos[i*3 + 0] = pos[i*3 + 0] = ofRandom(-dimensions.x, dimensions.x);
+      resting_pos[i*3 + 1] = pos[i*3 + 1] = ofRandom(-dimensions.y, dimensions.y);
+      resting_pos[i*3 + 2] = pos[i*3 + 2] = ofRandom(-dimensions.z, dimensions.z);
     }
   }
   // Load this information in to the FBOÔøΩs texture
   posPingPong.allocate(textureRes, textureRes,GL_RGB32F);
   posPingPong.src->getTextureReference().loadData(pos, textureRes, textureRes, GL_RGB);
   posPingPong.dst->getTextureReference().loadData(pos, textureRes, textureRes, GL_RGB);
+  
+  restingPos.allocate(textureRes, textureRes,GL_RGB32F);
+  restingPos.src->getTextureReference().loadData(resting_pos, textureRes, textureRes, GL_RGB);
+  restingPos.dst->getTextureReference().loadData(resting_pos, textureRes, textureRes, GL_RGB);
   delete [] pos;    // Delete the array
+  delete [] resting_pos;    // Delete the array
   
   
   // 2. Making arrays of float pixels with velocity information and the load it to a texture
@@ -106,6 +115,7 @@ void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
 
 //--------------------------------------------------------------
 void ParticleSystem::update(){
+  interpolation_ *= 0.99; //cos(inter_count_ * .01) * 0.5 + 0.5;
   // In each cycle itÔøΩs going to update the velocity first and the the position
   // Each one one with a different shader and FBO.
   // Because on GPU you canÔøΩt write over the texture that you are reading we are
@@ -125,6 +135,7 @@ void ParticleSystem::update(){
   updateVel.begin();
   updateVel.setUniformTexture("backbuffer", velPingPong.src->getTextureReference(), 0);   // passing the previus velocity information
   updateVel.setUniformTexture("posData", posPingPong.src->getTextureReference(), 1);  // passing the position information
+  updateVel.setUniformTexture("restingPosData", restingPos.src->getTextureReference(), 2);
   updateVel.setUniform1i("resolution", (int)textureRes);
   updateVel.setUniform2f("screen", (float)width, (float)height);
   updateVel.setUniform1f("timestep", (float)timeStep);
@@ -156,7 +167,7 @@ void ParticleSystem::update(){
   updatePos.setUniformTexture("prevPosData", posPingPong.src->getTextureReference(), 0); // Previus position
   updatePos.setUniformTexture("velData", velPingPong.src->getTextureReference(), 1);  // Velocity
   updatePos.setUniform1f("timestep",(float) timeStep );
-  updatePos.setUniform1f("pulse", bass_amplitude_);
+  updatePos.setUniform1f("pulse", dc_filtered_bass_ + 0.05);
   
   // draw the source position texture to be updated
   posPingPong.src->draw(0, 0);
@@ -231,6 +242,7 @@ void ParticleSystem::draw(){
   updateRender.setUniform1f("size", (float)particleSize);
   updateRender.setUniform1f("imgWidth", (float)sparkImg.getWidth());
   updateRender.setUniform1f("imgHeight", (float)sparkImg.getHeight());
+  updateRender.setUniform1f("interpolation", (float)interpolation_ + bass_amplitude_ * 0.7);
   
   ofPushStyle();
   ofEnableBlendMode( OF_BLENDMODE_ADD );
