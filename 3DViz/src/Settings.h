@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string.h>
 #include "ofMain.h"
+#include "OptionsButtons.h"
 
 class Settings {
 public:
@@ -22,11 +23,16 @@ public:
   void draw();
   void exit();
   
+  void onOptionsChoice(std::string & choice);
+  
   ofEvent<std::string> artistSelection;
   
 private:
   int count;
   std::string artist_name_;
+  std::vector<string> stage_names_;
+  OptionsButtons options_;
+  
   
 };
 

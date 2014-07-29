@@ -13,22 +13,25 @@ Settings::Settings() {
   artist_name_ = "";
 }
 
-void Settings::setup() {}
+void Settings::setup() {
+  stage_names_.push_back("Stage 1");
+  stage_names_.push_back("Stage 2");
+  stage_names_.push_back("Main Stage");
+  options_.setup(stage_names_, "Stages", 20, 20, 500, 1000);
+  ofAddListener(options_.choice, this, &Settings::onOptionsChoice);
+}
 
 void Settings::update() {
-  if (count >= 100) {
-    artist_name_ = "Boards of Canada";
-    ofNotifyEvent(artistSelection, artist_name_, this);
-  } else {
-    count += 1;
-  }
+  options_.update();
 }
 
 void Settings::draw() {
-  ofSetColor(0, 0, 0);
-  for(int i = 0; i < count; i++) {
-    ofDrawBitmapString(".", i * 2, 50);
-  }
+  options_.draw();
+}
+
+void Settings::onOptionsChoice(std::string &choice) {
+  // TODO get the artist name instead of just using the stage name
+  ofNotifyEvent(artistSelection, choice, this);
 }
 
 void Settings::exit() {}
