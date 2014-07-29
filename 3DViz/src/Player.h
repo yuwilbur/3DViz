@@ -20,7 +20,7 @@
 #include "AudioPlayer.h"
 
 class Player {
-    
+
 public:
   void setup(std::string artist_name);
   void update();

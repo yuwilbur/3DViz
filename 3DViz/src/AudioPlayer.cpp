@@ -15,6 +15,9 @@ void AudioPlayer::setup() {
 	// load in sounds:
 	input_music_.loadSound("sounds/Journeyman.mp3");
 	input_music_.play();
+  input_music_.setLoop(true);
+  
+  // input_music_.setPosition(0.2);
   
 	// the fft needs to be smoothed out, so we create an array of floats
 	// for that purpose:
@@ -79,12 +82,12 @@ void AudioPlayer::updateColor(float& R, float& G, float& B) {
 }
 
 void AudioPlayer::updateColor(ofColor& color) {
-	unsigned char max_value = 255;
-  unsigned char spectrum_increment = 1;
-  
-  unsigned char R = color.r;
-  unsigned char G = color.g;
-  unsigned char B = color.b;
+	int max_value = 255;
+  int spectrum_increment = std::max<int>(1, std::min<int>(64 ,max_hf_amplitude_ / 10));
+  float hue_increment = std::max(0.0005f, (max_hf_amplitude_*5 - bass_amplitude_) / 1000);
+  int R = (int)color.r;
+  int G = (int)color.g;
+  int B = (int)color.b;
 	if (R >= max_value && G < max_value && B <= 0) {
 		G += spectrum_increment; // 255,0,0 -> 255,255,0
 	} else if (R > 0 && G >= max_value && B <= 0) {
@@ -98,9 +101,10 @@ void AudioPlayer::updateColor(ofColor& color) {
 	} else if (R >= max_value && G <= 0 && B > 0) {
 		B -= spectrum_increment; // 255,0,255 -> 255,0,0
 	}
-  color.r = R;
-  color.g = G;
-  color.b = B;
+  //color.r = std::min<unsigned char>(255,std::max<int>(0,R));
+  //color.g = std::min<unsigned char>(255,std::max<int>(0,G));
+  //color.b = std::min<unsigned char>(255,std::max<int>(0,B));
+  color.setHue(color.getHue() + hue_increment);
 }
 
 void AudioPlayer::amplifyColor(float& R, float& G, float& B) {
@@ -130,7 +134,6 @@ void AudioPlayer::amplifyColor(ofColor& color) {
   color.r = (unsigned char)R;
   color.g = (unsigned char)G;
   color.b = (unsigned char)B;
-  //std::cout << (int)color.r << " " << (int)color.g << " " << (int)color.b << std::endl;
 }
 
 //--------------------------------------------------------------
@@ -139,26 +142,40 @@ void AudioPlayer::draw(){
   bass_amplitude_ = 0.0;
   
 	float total_width = ofGetWidth();
-	// draw the fft resutls:
-	ofSetColor(0,0,0,255); // Draw the bands white
 	float width = std::min(10.0f, (float)(total_width) / nBandsToGet);
 	max_amplitude_ = 0;
 	int num_useful_amplitudes = 0;
+  int num_hf_amplitudes = 0;
 	prev_average_amplitude_ = average_amplitude_;
 	average_amplitude_ = 0;
+  hf_amplitude_ = 0;
+  max_hf_amplitude_ = 0;
 	for (int i = 0;i < nBandsToGet; i++){
 		// (we use negative height here, because we want to flip them
 		// because the top corner is 0,0)
 		float amplitude = fftSmoothed[i] * 200;
     if (i < bass_bands)
       bass_amplitude_ += amplitude / 5120.0;
+    else
+      max_hf_amplitude_ = std::max(amplitude, max_hf_amplitude_);
 		amplitude = std::min(amplitude, amplitude_limit_);
     float visual_amplitude = amplitude * 1.5;
+    int outline_color = std::min<int>(128,fftSmoothed[i] * 60 + bass_amplitude_ * 250);
+    ofSetColor(outline_color);
+    float ratio = 1.5;
+    float outline_height = visual_amplitude*ratio;
+		ofRect(ofGetWidth()/2+i*width,ofGetHeight()/2-outline_height/2,width,outline_height);
+    ofRect(ofGetWidth()/2-i*width,ofGetHeight()/2-outline_height/2,-width,outline_height);
+    ofSetColor(0,0,0,255);
 		ofRect(ofGetWidth()/2+i*width,ofGetHeight()/2-visual_amplitude/2,width,visual_amplitude);
     ofRect(ofGetWidth()/2-i*width,ofGetHeight()/2-visual_amplitude/2,-width,visual_amplitude);
 		max_amplitude_ = std::max(max_amplitude_, amplitude);
 		
 		if (amplitude> 10.0f) {
+      if (i >= bass_bands) {
+        hf_amplitude_ += amplitude;
+        num_hf_amplitudes++;
+      }
 			average_amplitude_ += amplitude;
 			num_useful_amplitudes++;
 		}
@@ -166,5 +183,8 @@ void AudioPlayer::draw(){
 	if (num_useful_amplitudes > 0) {
 		average_amplitude_ /= num_useful_amplitudes;
 	}
+  if (num_hf_amplitudes > 0) {
+    hf_amplitude_ /= num_hf_amplitudes;
+  }
   bass_amplitude_ *= bass_amplitude_;
 }

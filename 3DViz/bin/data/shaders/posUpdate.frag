@@ -13,7 +13,7 @@ void main(void){
     vec3 pos = texture2DRect( prevPosData, st ).xyz;
     vec3 vel = texture2DRect( velData, st ).xyz;     // Fetch both the pos and vel.
     
-    pos += (1 - 8.5 * pulse) * vel * timestep; // Updates the position
+    pos += (1 - 12 * pulse) * vel * timestep; // Updates the position
     
     gl_FragColor.rgba = vec4(pos.x,pos.y, pos.z,1.0);  // And finaly it store it on the position FBO
 }

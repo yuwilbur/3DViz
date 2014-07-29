@@ -70,8 +70,13 @@ public:
   void setGravity(ofVec3f position, float strength);
   void setGravity2(ofVec3f position, float strength);
   void setColor(ofColor color) { color_ = color; }
-  void setBassAmplitude(float amp) { bass_amplitude_ = amp; }
   void changeArtist(std::string aritst_name);
+  void setBassAmplitude(float amp) {
+    static const float radius = 0.6f;
+    static const float scale = (1 + radius) / 2.0f;
+    dc_filtered_bass_ = scale * (amp - bass_amplitude_) + radius * dc_filtered_bass_;
+    bass_amplitude_ = amp;
+  }
 
   void gotMessage(ofMessage msg);
   
@@ -81,7 +86,8 @@ public:
   
   pingPongBuffer posPingPong;
   pingPongBuffer velPingPong;
-  
+  pingPongBuffer restingPos;
+
   ofFbo   renderFBO;
   
   ofImage sparkImg;
@@ -100,8 +106,6 @@ public:
   ofVec3f gravity_position2;
   float gravity_strength2;
   
-  float bass_amplitude_;
-  
   ofVec3f center;
   ofVec3f dimensions;
   
@@ -109,4 +113,9 @@ public:
   ofColor color_;
   
   ImageInput textures_;
+  
+  float interpolation_;
+  
+  float bass_amplitude_;
+  float dc_filtered_bass_;
 };

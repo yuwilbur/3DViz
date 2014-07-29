@@ -33,6 +33,8 @@ public:
   float	BG_G_;
   float	BG_B_;
   float bass_amplitude_;
+  float hf_amplitude_;
+  float max_hf_amplitude_;
   
   int nBandsToGet;
 };
