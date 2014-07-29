@@ -8,18 +8,23 @@
 
 #include "ImageInput.h"
 
-ImageInput::ImageInput() : drawn_(false) {}
+ImageInput::ImageInput() {}
 
 void ImageInput::setup(std::string artist_name) {
     // TODO get an image related to artist_name
-    str_filename_ = "album_art.jpg";
-    of_img_.loadImage(str_filename_);
-    color = of_img_.getTextureReference();
+  if (artist_name == "Amon Tobin") {
+    str_filename_ = "images/artists/Amon Tobin.jpg";
+  } else if (artist_name == "Boards of Canada") {
+    str_filename_ = "images/artists/Boards of Canada.jpg";
+  } else {
+    str_filename_ = "images/bleep_or_die.jpg";
+  }
+  of_img_.loadImage(str_filename_);
+  color = of_img_.getTextureReference();
 }
 
 void ImageInput::changeArtist(std::string artist_name) {
-  of_img_.loadImage("boards_of_canada.jpg");
-  color = of_img_.getTextureReference();
+  setup(artist_name);
 }
 
 
