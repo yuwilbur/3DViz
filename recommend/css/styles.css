@@ -1,0 +1,56 @@
+body {
+    text-decoration: none;
+}
+
+#noJavascriptDiv {
+    cursor:not-allowed;
+    border-style: solid;
+    background-color: red;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+#formDiv {
+
+}
+
+#forkMeDiv {
+    display:none;
+}
+
+#loadingDiv {
+	display: none;
+	text-align: center;
+}
+
+#resultDiv {
+	display: none;
+}
+
+#recSongDiv {
+    
+}
+
+#resultTable {
+    cursor:cell;
+}
+
+#usFlag {
+	height: 20px;
+}
+#usFlag:hover {
+	opacity: 0.8;
+}
+
+.lobbyistColumn {
+	font-size: 80%;
+}
+
+.noFilingsRow {
+	text-align: center;
+	font-style: italic;
+}
+
+.highlightedMatch {
+	font-weight: bold;
+	font-size: 125%;
+}
