@@ -18,6 +18,16 @@ void testApp::update(){
 void testApp::draw(){
   if (show_player_) {
     player_.draw();
+    /* testing that images get changed -- only for debugging
+    ofPushStyle();
+    ofSetColor(255, 255, 255, 255);
+    ofFill();
+    ofDisableLighting();
+    ofRect(0, 0, ofGetWidth(), ofGetHeight());
+    player_.particle_system_.textures_.of_img_.draw(0, 0);
+    ofEnableLighting();
+    ofPopStyle();
+     */
   } else {
     settings_.draw();
   }
