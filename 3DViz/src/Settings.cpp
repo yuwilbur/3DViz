@@ -58,8 +58,10 @@ void Settings::onClick(ofMouseEventArgs &m) {
   for (vector<stage>::iterator it = stages_.begin(); it != stages_.end(); it++) {
     if (ofDist(m.x, m.y, it->x, it->y) < r_) {
       if (selected_ != NULL && selected_->name == it->name) {
-        findArtist();
+        artist_name_ = findArtist();
+        cout << "ARTIST " << artist_name_ << endl;
         selected_ = NULL;
+        ofNotifyEvent(artistSelection, artist_name_, this);
       } else {
         selected_ = &(*it);
       }
@@ -67,11 +69,137 @@ void Settings::onClick(ofMouseEventArgs &m) {
   }
 }
 
-void Settings::findArtist() {
+std::string Settings::findArtist() {
+  cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
   //ofNotifyEvent(artistSelection, selected_->name, this);
   // TODO actually find the artist for that stage at that time
   artist_name_ = "Amon Tobin";
-  ofNotifyEvent(artistSelection, artist_name_, this);
+  
+  std::string stage = selected_->name;
+  
+  // get the time
+  int weekday = ofGetWeekday(); // Mon = 1, Tues = 2, etc
+  int hours = ofGetHours();
+  int minutes = ofGetMinutes();
+  
+  // force the time to be within the festival
+  if (weekday < 5) {
+    weekday = 6; // default to Saturday when the best shows are
+  }
+  
+  if (weekday == 5) { // Friday
+    if (stage == "Lands End") {
+      
+    } else if (stage == "Sutro") {
+      
+    } else if (stage == "Twin Peaks") {
+      
+    } else if (stage == "Panhandle") {
+      
+    } else if (stage == "House") {
+      
+    } else if (stage == "Barbary") {
+      
+    }
+  } else if (weekday == 6) { // Saturday
+    if (stage == "Lands End") {
+      if (hours < 14) {
+        return "The Soul Rebels";
+      } else if (hours < 15 && minutes < 20) {
+        return "Run the Jewels";
+      } else if (hours < 5) {
+        return "Holy Ghost";
+      } else if (hours < 18 && minutes < 20) {
+        return "Chromeo";
+      } else if (hours < 20) {
+        return "Disclosure";
+      } else {
+        return "Kanye West";
+      }
+    } else if (stage == "Sutro") {
+      if (hours < 13) {
+        return "Rayland Baxter";
+      } else if (hours < 15 && minutes < 20) {
+        return "Greensky Bluegrass";
+      } else if (hours < 16) {
+        return "Phosphorescent";
+      } else if (hours < 17 && minutes < 20) {
+        return "Nicki Bluhm and the Gramblers";
+      } else if (hours < 19) {
+        return "Kacey Musgraves";
+      } else {
+        return "Tedeschi Trucks Band";
+      }
+    } else if (stage == "Twin Peaks") {
+      if (hours < 14) {
+        return "AER";
+      } else if (hours < 15) {
+        return "Bleachers";
+      } else if (hours < 17) {
+        return "WarPaint";
+      } else if (hours < 19 && minutes < 30) {
+        return "Grouplove";
+      } else if (hours < 20) {
+        return "Tegan & Sara";
+      } else {
+        return "Arctic Monkeys";
+      }
+    } else if (stage == "Panhandle") {
+      if (hours < 13) {
+        return "Night Terrors of 1927";
+      } else if (hours < 15 && minutes < 30) {
+        return "USPS Janis Joplin Tribute Featuring Special Guests";
+      } else if (hours < 16) {
+        return "Nahko and Medicine for the People";
+      } else if (hours < 18) {
+        return "Mikal Cronin";
+      } else if (hours < 19) {
+        return "Bear Hands";
+      } else {
+        return "Typhoon";
+      }
+    } else if (stage == "House") {
+      if (hours < 14 && minutes < 30) {
+        return "Shouts!";
+      } else if (hours < 15) {
+        return "DJ Dials";
+      } else if (hours < 17 && minutes < 30) {
+        return "Motion Potion";
+      } else if (hours < 18) {
+        return "Paul Johnson";
+      } else {
+        return "DJ Icey";
+      }
+    } else if (stage == "Barbary") {
+      if (hours < 14) {
+        return "Garfunkel & Oates and Aparna Nancherla";
+      } else if (hours < 16) {
+        return "Aisha Tyler, Ali Mafi and Matt McArthy";
+      } else if (hours < 18) {
+        return "Lewis Black, Rory Albanese and Aparna Nancherla";
+      } else {
+        return "Garfunkel & Oates and Aparna Nancherla";
+      }
+    }
+  } else { // Sunday
+    if (stage == "Lands End") {
+      
+    } else if (stage == "Sutro") {
+      
+    } else if (stage == "Twin Peaks") {
+      
+    } else if (stage == "Panhandle") {
+      
+    } else if (stage == "House") {
+      
+    } else if (stage == "Barbary") {
+      
+    }
+    
+  }
+
+  cout << "****************************************************************************************************" << endl;
+
 }
 
 void Settings::exit() {

@@ -29,7 +29,7 @@ public:
   void exit();
   
   void onClick(ofMouseEventArgs &m);
-  void findArtist();
+  std::string findArtist();
   
   ofEvent<std::string> artistSelection;
   
