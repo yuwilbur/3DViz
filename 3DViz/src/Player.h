@@ -30,6 +30,8 @@ public:
   
   void exit();
   
+  ParticleSystem particle_system_;
+  
 private:
   ofEasyCam cam;
   ofLight l1;
@@ -38,7 +40,6 @@ private:
   ofCylinderPrimitive cylinder_;
   
   HandController hand_controller_;
-  ParticleSystem particle_system_;
   AudioPlayer audio_player_;
   
   ofColor current_color_;

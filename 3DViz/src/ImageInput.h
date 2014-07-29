@@ -20,17 +20,10 @@ public:
     void setup(std::string artist_name);
     void changeArtist(std::string artist_name);
   
-    ofTexture color;
-    
-private:
-
-    std::string str_filename_;
     ofImage of_img_;
-    
-    ofTexture grayscale;
-    ofTexture contours;
-    
-    bool drawn_;
+    ofTexture color;
+  
+    std::string str_filename_;
 
 };
 
