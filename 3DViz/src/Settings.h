@@ -28,7 +28,8 @@ public:
   void draw();
   void exit();
   
-  void onClick(ofMouseEventArgs &m);
+  void keyReleased(ofKeyEventArgs &e);
+
   std::string findArtist();
   
   ofEvent<std::string> artistSelection;

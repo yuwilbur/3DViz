@@ -24,7 +24,7 @@ void testApp::draw(){
     ofFill();
     ofDisableLighting();
     ofRect(0, 0, ofGetWidth(), ofGetHeight());
-    player_.particle_system_.textures_.of_img_.draw(0, 0);
+    player_.particle_system_.textures_.color.draw(0, 0);
     ofEnableLighting();
     ofPopStyle();
      */
@@ -45,7 +45,13 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-  show_player_ = !show_player_;
+  if (show_player_) {
+    show_player_ = false;
+  } else {
+    if (key == 120) { // 'x'
+      show_player_ = true;
+    }
+  }
 }
 
 //--------------------------------------------------------------
