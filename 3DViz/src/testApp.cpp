@@ -4,22 +4,19 @@
 using namespace Leap;
 
 void testApp::setup(){
-  got_artist_ = false;
+  player_.setup("Amon Tobin");
+  show_player_ = true;
   settings_.setup();
-  
   ofAddListener(settings_.artistSelection, this, &testApp::onArtistSelection);
 }
 
 void testApp::update(){
-  if (got_artist_) {
-    player_.update();
-  } else {
-    settings_.update();
-  }
+  player_.update();
+  settings_.update();
 }
 
 void testApp::draw(){
-  if (got_artist_) {
+  if (show_player_) {
     player_.draw();
   } else {
     settings_.draw();
@@ -27,9 +24,8 @@ void testApp::draw(){
 }
 
 void testApp::onArtistSelection(std::string &artist_name) {
-  artist_name_ = artist_name;
-  player_.setup(artist_name_);
-  got_artist_ = true;
+  player_.changeArtist(artist_name);
+  show_player_ = true;
 }
 
 //--------------------------------------------------------------
@@ -39,6 +35,7 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
+  show_player_ = !show_player_;
 }
 
 //--------------------------------------------------------------

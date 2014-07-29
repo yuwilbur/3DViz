@@ -12,7 +12,12 @@
 #include <iostream>
 #include <string.h>
 #include "ofMain.h"
-#include "OptionsButtons.h"
+
+struct stage {
+  std::string name;
+  int x;
+  int y;
+};
 
 class Settings {
 public:
@@ -23,17 +28,17 @@ public:
   void draw();
   void exit();
   
-  void onOptionsChoice(std::string & choice);
+  void onClick(ofMouseEventArgs &m);
+  void findArtist();
   
   ofEvent<std::string> artistSelection;
   
 private:
-  int count;
+  int r_ = 50, dx_ = 100, dy_ = 50;
   std::string artist_name_;
-  std::vector<string> stage_names_;
-  OptionsButtons options_;
-  
-  
+  std::vector<stage> stages_;
+  stage* selected_;
+  ofImage map_;
 };
 
 #endif /* defined(___dViz__Settings__) */

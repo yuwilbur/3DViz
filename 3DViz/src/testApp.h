@@ -28,7 +28,6 @@ public:
 private:
   Player player_;
   Settings settings_;
-  std::string artist_name_;
-  bool got_artist_;
+  bool show_player_;
 
 };

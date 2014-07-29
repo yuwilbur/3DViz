@@ -103,6 +103,9 @@ void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen, std::string artist_name)
   
 }
 
+void ParticleSystem::changeArtist(std::string artist_name) {
+  textures_.changeArtist(artist_name);
+}
 
 //--------------------------------------------------------------
 void ParticleSystem::update(){

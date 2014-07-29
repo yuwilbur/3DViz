@@ -71,6 +71,7 @@ public:
   void setGravity2(ofVec3f position, float strength);
   void setColor(ofColor color) { color_ = color; }
   void setBassAmplitude(float amp) { bass_amplitude_ = amp; }
+  void changeArtist(std::string aritst_name);
 
   void gotMessage(ofMessage msg);
   

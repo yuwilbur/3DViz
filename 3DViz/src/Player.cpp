@@ -32,6 +32,9 @@ void Player::setup(std::string artist_name){
   glEnable(GL_NORMALIZE);
 }
 
+void Player::changeArtist(std::string artist_name) {
+  particle_system_.changeArtist(artist_name);
+}
 
 //--------------------------------------------------------------
 void Player::update(){

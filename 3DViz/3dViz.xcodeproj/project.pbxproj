@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		14A98D551987306D00A8045D /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14A98D531987306D00A8045D /* Player.cpp */; };
 		14A98D591987354300A8045D /* Settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14A98D571987354300A8045D /* Settings.cpp */; };
-		14A98D5C19873AF600A8045D /* MyButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14A98D5A19873AF600A8045D /* MyButton.cpp */; };
-		14A98D5F19874B4500A8045D /* OptionsButtons.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14A98D5D19874B4500A8045D /* OptionsButtons.cpp */; };
 		14B454A11984D80100E280FE /* ImageInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14B4549F1984D80100E280FE /* ImageInput.cpp */; };
 		14B456851984F58A00E280FE /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B456721984F58A00E280FE /* opencv.a */; };
 		14B456861984F58A00E280FE /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14B456751984F58A00E280FE /* ofxCvColorImage.cpp */; };
@@ -90,10 +88,6 @@
 		14A98D541987306D00A8045D /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		14A98D571987354300A8045D /* Settings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Settings.cpp; sourceTree = "<group>"; };
 		14A98D581987354300A8045D /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
-		14A98D5A19873AF600A8045D /* MyButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyButton.cpp; sourceTree = "<group>"; };
-		14A98D5B19873AF600A8045D /* MyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyButton.h; sourceTree = "<group>"; };
-		14A98D5D19874B4500A8045D /* OptionsButtons.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OptionsButtons.cpp; sourceTree = "<group>"; };
-		14A98D5E19874B4500A8045D /* OptionsButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsButtons.h; sourceTree = "<group>"; };
 		14B4549F1984D80100E280FE /* ImageInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageInput.cpp; sourceTree = "<group>"; };
 		14B454A01984D80100E280FE /* ImageInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInput.h; sourceTree = "<group>"; };
 		14B456101984F58A00E280FE /* cv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cv.h; sourceTree = "<group>"; };
@@ -622,10 +616,6 @@
 				14A98D541987306D00A8045D /* Player.h */,
 				14A98D571987354300A8045D /* Settings.cpp */,
 				14A98D581987354300A8045D /* Settings.h */,
-				14A98D5A19873AF600A8045D /* MyButton.cpp */,
-				14A98D5B19873AF600A8045D /* MyButton.h */,
-				14A98D5D19874B4500A8045D /* OptionsButtons.cpp */,
-				14A98D5E19874B4500A8045D /* OptionsButtons.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -733,12 +723,10 @@
 				14B4568B1984F58A00E280FE /* ofxCvImage.cpp in Sources */,
 				14A98D591987354300A8045D /* Settings.cpp in Sources */,
 				14B456861984F58A00E280FE /* ofxCvColorImage.cpp in Sources */,
-				14A98D5C19873AF600A8045D /* MyButton.cpp in Sources */,
 				14B456881984F58A00E280FE /* ofxCvFloatImage.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				14A98D551987306D00A8045D /* Player.cpp in Sources */,
 				14B456871984F58A00E280FE /* ofxCvContourFinder.cpp in Sources */,
-				14A98D5F19874B4500A8045D /* OptionsButtons.cpp in Sources */,
 				D107666819847DB3009E74CC /* HandController.cpp in Sources */,
 				14B4568C1984F58A00E280FE /* ofxCvShortImage.cpp in Sources */,
 				14B4568A1984F58A00E280FE /* ofxCvHaarFinder.cpp in Sources */,

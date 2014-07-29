@@ -18,8 +18,8 @@ public:
     ImageInput();
     
     void setup(std::string artist_name);
-    void update_draw_hack();
-    
+    void changeArtist(std::string artist_name);
+  
     ofTexture color;
     
 private:

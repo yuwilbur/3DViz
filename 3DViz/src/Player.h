@@ -26,6 +26,7 @@ public:
   void update();
   void draw();
   void drawBone(Leap::Bone bone);
+  void changeArtist(std::string artist_name);
   
   void exit();
   
