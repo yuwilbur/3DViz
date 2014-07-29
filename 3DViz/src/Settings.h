@@ -34,7 +34,7 @@ public:
   ofEvent<std::string> artistSelection;
   
 private:
-  int r_ = 50, dx_ = 100, dy_ = 50;
+  int r_, dx_, dy_;
   std::string artist_name_;
   std::vector<stage> stages_;
   stage* selected_;

@@ -8,7 +8,8 @@
 
 #include "Settings.h"
 
-Settings::Settings() {
+Settings::Settings() :
+  r_(50), dx_(100), dy_(50) {
   artist_name_ = "";
   selected_ = NULL;
   ofAddListener(ofEvents().mouseReleased, this, &Settings::onClick);
@@ -71,7 +72,6 @@ void Settings::onClick(ofMouseEventArgs &m) {
 
 std::string Settings::findArtist() {
   cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-  //ofNotifyEvent(artistSelection, selected_->name, this);
   // TODO actually find the artist for that stage at that time
   artist_name_ = "Amon Tobin";
   
