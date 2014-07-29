@@ -1,10 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "Leap.h"
-#include "HandController.h"
-#include "ParticleSystem.h"
-#include "AudioPlayer.h"
+#include "Player.h"
 
 class testApp : public ofBaseApp {
 
@@ -12,7 +9,6 @@ public:
   void setup();
   void update();
   void draw();
-  void drawBone(Leap::Bone bone);
   
   void keyPressed  (int key);
   void keyReleased(int key);
@@ -26,16 +22,6 @@ public:
   void exit();
   
 private:
-  ofEasyCam cam;
-  ofLight l1;
-  ofLight l2;
-  ofMaterial m1;
-  ofCylinderPrimitive cylinder_;
-  
-  HandController hand_controller_;
-  ParticleSystem particle_system_;
-  AudioPlayer audio_player_;
- 
-  ofColor current_color_;
-  ofColor amped_color_;
+  Player player_;
+
 };

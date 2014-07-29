@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14A98D551987306D00A8045D /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14A98D531987306D00A8045D /* Player.cpp */; };
 		14B454A11984D80100E280FE /* ImageInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14B4549F1984D80100E280FE /* ImageInput.cpp */; };
 		14B456851984F58A00E280FE /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14B456721984F58A00E280FE /* opencv.a */; };
 		14B456861984F58A00E280FE /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 14B456751984F58A00E280FE /* ofxCvColorImage.cpp */; };
@@ -82,6 +83,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		14A98D531987306D00A8045D /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		14A98D541987306D00A8045D /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		14B4549F1984D80100E280FE /* ImageInput.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageInput.cpp; sourceTree = "<group>"; };
 		14B454A01984D80100E280FE /* ImageInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageInput.h; sourceTree = "<group>"; };
 		14B456101984F58A00E280FE /* cv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cv.h; sourceTree = "<group>"; };
@@ -606,6 +609,8 @@
 				14B454A01984D80100E280FE /* ImageInput.h */,
 				D1859B351985118600D09386 /* AudioPlayer.cpp */,
 				D1859B361985118600D09386 /* AudioPlayer.h */,
+				14A98D531987306D00A8045D /* Player.cpp */,
+				14A98D541987306D00A8045D /* Player.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -714,6 +719,7 @@
 				14B456861984F58A00E280FE /* ofxCvColorImage.cpp in Sources */,
 				14B456881984F58A00E280FE /* ofxCvFloatImage.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
+				14A98D551987306D00A8045D /* Player.cpp in Sources */,
 				14B456871984F58A00E280FE /* ofxCvContourFinder.cpp in Sources */,
 				D107666819847DB3009E74CC /* HandController.cpp in Sources */,
 				14B4568C1984F58A00E280FE /* ofxCvShortImage.cpp in Sources */,
