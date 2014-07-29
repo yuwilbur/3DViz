@@ -9,8 +9,8 @@
 #include "ParticleSystem.h"
 
 //--------------------------------------------------------------
-void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen){
-  textures_.setup("Boards of Canada");
+void ParticleSystem::setup(ofVec3f cent, ofVec3f dimen, std::string artist_name){
+  textures_.setup(artist_name);
 
   bass_amplitude_ = 0.0;
   center = cent;

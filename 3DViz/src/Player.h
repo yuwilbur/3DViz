@@ -22,26 +22,26 @@
 class Player {
     
 public:
-    void setup();
-    void update();
-    void draw();
-    void drawBone(Leap::Bone bone);
-    
-    void exit();
-    
+  void setup(std::string artist_name);
+  void update();
+  void draw();
+  void drawBone(Leap::Bone bone);
+  
+  void exit();
+  
 private:
-    ofEasyCam cam;
-    ofLight l1;
-    ofLight l2;
-    ofMaterial m1;
-    ofCylinderPrimitive cylinder_;
-    
-    HandController hand_controller_;
-    ParticleSystem particle_system_;
-    AudioPlayer audio_player_;
-    
-    ofColor current_color_;
-    ofColor amped_color_;
+  ofEasyCam cam;
+  ofLight l1;
+  ofLight l2;
+  ofMaterial m1;
+  ofCylinderPrimitive cylinder_;
+  
+  HandController hand_controller_;
+  ParticleSystem particle_system_;
+  AudioPlayer audio_player_;
+  
+  ofColor current_color_;
+  ofColor amped_color_;
 };
 
 

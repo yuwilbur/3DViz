@@ -4,15 +4,32 @@
 using namespace Leap;
 
 void testApp::setup(){
-  player_.setup();
+  got_artist_ = false;
+  settings_.setup();
+  
+  ofAddListener(settings_.artistSelection, this, &testApp::onArtistSelection);
 }
 
 void testApp::update(){
-  player_.update();
+  if (got_artist_) {
+    player_.update();
+  } else {
+    settings_.update();
+  }
 }
 
 void testApp::draw(){
-  player_.draw();
+  if (got_artist_) {
+    player_.draw();
+  } else {
+    settings_.draw();
+  }
+}
+
+void testApp::onArtistSelection(std::string &artist_name) {
+  artist_name_ = artist_name;
+  player_.setup(artist_name_);
+  got_artist_ = true;
 }
 
 //--------------------------------------------------------------
@@ -61,5 +78,7 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 //--------------------------------------------------------------
 void testApp::exit(){
+  ofRemoveListener(settings_.artistSelection, this, &testApp::onArtistSelection);
   player_.exit();
+  settings_.exit();
 }

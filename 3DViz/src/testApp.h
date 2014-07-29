@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 #include "Player.h"
+#include "Settings.h"
+#include <string>
 
 class testApp : public ofBaseApp {
 
@@ -9,6 +11,8 @@ public:
   void setup();
   void update();
   void draw();
+  
+  void onArtistSelection(std::string &artist_name);
   
   void keyPressed  (int key);
   void keyReleased(int key);
@@ -23,5 +27,8 @@ public:
   
 private:
   Player player_;
+  Settings settings_;
+  std::string artist_name_;
+  bool got_artist_;
 
 };

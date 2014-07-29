@@ -63,7 +63,7 @@ private:
 
 class ParticleSystem {
 public:
-  void setup(ofVec3f center, ofVec3f dimensions);
+  void setup(ofVec3f center, ofVec3f dimensions, std::string artist_name);
   void update();
   void draw();
   

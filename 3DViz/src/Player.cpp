@@ -13,23 +13,23 @@
 
 using namespace Leap;
 
-void Player::setup(){
-    current_color_ = ofColor(255, 0, 0, 1);
-    ofSetFrameRate(60);
-    ofSetVerticalSync(true);
-    ofSetLogLevel(OF_LOG_VERBOSE);
-    
-    l1.setPosition(200, 300, 50);
-    l2.setPosition(-200, -200, 50);
-    
-    cam.setOrientation(ofPoint(-20, 0, 0));
-    
-    hand_controller_.setTranslation(ofVec3f(0, -300, -100));
-    hand_controller_.setScale(2);
-    particle_system_.setup(ofVec3f(0, 0, -100), ofVec3f(600, 400, 100));
-    audio_player_.setup();
-    
-    glEnable(GL_NORMALIZE);
+void Player::setup(std::string artist_name){
+  current_color_ = ofColor(255, 0, 0, 1);
+  ofSetFrameRate(60);
+  ofSetVerticalSync(true);
+  ofSetLogLevel(OF_LOG_VERBOSE);
+  
+  l1.setPosition(200, 300, 50);
+  l2.setPosition(-200, -200, 50);
+  
+  cam.setOrientation(ofPoint(-20, 0, 0));
+  
+  hand_controller_.setTranslation(ofVec3f(0, -300, -100));
+  hand_controller_.setScale(2);
+  particle_system_.setup(ofVec3f(0, 0, -100), ofVec3f(600, 400, 100), artist_name);
+  audio_player_.setup();
+  
+  glEnable(GL_NORMALIZE);
 }
 
 
