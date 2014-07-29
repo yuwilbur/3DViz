@@ -61,5 +61,5 @@ void testApp::dragEvent(ofDragInfo dragInfo){
 
 //--------------------------------------------------------------
 void testApp::exit(){
-  
+  player_.exit();
 }
