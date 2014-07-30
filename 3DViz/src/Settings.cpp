@@ -63,13 +63,13 @@ void Settings::draw() {
     ofDrawBitmapString("5", stages_[4].x, stages_[4].y);
     ofDrawBitmapString("6", stages_[5].x, stages_[5].y);
   
-  ofDrawBitmapString("1 " + stages_[0].name, 50, 800);
-  ofDrawBitmapString("2 " + stages_[1].name, 50, 775);
-  ofDrawBitmapString("3 " + stages_[2].name, 50, 750);
-  ofDrawBitmapString("4 " + stages_[3].name, 50, 725);
-  ofDrawBitmapString("5 " + stages_[4].name, 50, 700);
-  ofDrawBitmapString("6 " + stages_[5].name, 50, 675);
-  ofDrawBitmapString("x Cancel", 50, 650);
+  ofDrawBitmapString("1 " + stages_[0].name, 50, 700);
+  ofDrawBitmapString("2 " + stages_[1].name, 50, 675);
+  ofDrawBitmapString("3 " + stages_[2].name, 50, 650);
+  ofDrawBitmapString("4 " + stages_[3].name, 50, 625);
+  ofDrawBitmapString("5 " + stages_[4].name, 50, 600);
+  ofDrawBitmapString("6 " + stages_[5].name, 50, 575);
+  ofDrawBitmapString("x Cancel", 50, 550);
   
   ofEnableLighting();
   ofPopStyle();
@@ -78,12 +78,14 @@ void Settings::draw() {
 void Settings::keyReleased(ofKeyEventArgs &e) {
   int n = e.key - 48;
   if (n >= 1 && n <= 6) {
-    selected_ = &stages_[n-1];
+    selected_ = &stages_[n - 1];
     artist_name_ = findArtist();
     cout << "**************************************************************************************" << endl;
     cout << "ARTIST " << artist_name_ << endl;
-    ofNotifyEvent(artistSelection, artist_name_, this);
   }
+  if (e.key == 13)
+    ofNotifyEvent(artistSelection, artist_name_, this);
+
   /*
   std::cout << "CLICK" << std::endl;
   for (vector<stage>::iterator it = stages_.begin(); it != stages_.end(); it++) {
