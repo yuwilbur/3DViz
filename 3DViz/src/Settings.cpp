@@ -113,10 +113,10 @@ std::string Settings::findArtist() {
   
   // force the time to be within the festival
   if (weekday < 5) {
-    weekday = 6; // default to Saturday when the best shows are
+    weekday = 5; // default to Friday
   }
   
-  if (weekday == 5) { // Friday
+  if (weekday == 6) { // Saturday
     if (stage == "Lands End") {
       
     } else if (stage == "Sutro") {
@@ -130,7 +130,7 @@ std::string Settings::findArtist() {
     } else if (stage == "Barbary") {
       
     }
-  } else if (weekday == 6) { // Saturday
+  } else if (weekday == 5) { // Friday
     if (stage == "Lands End") {
       if (hours < 14) {
         return "The Soul Rebels";
