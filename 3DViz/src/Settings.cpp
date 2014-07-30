@@ -78,12 +78,14 @@ void Settings::draw() {
 void Settings::keyReleased(ofKeyEventArgs &e) {
   int n = e.key - 48;
   if (n >= 1 && n <= 6) {
-    selected_ = &stages_[n];
+    selected_ = &stages_[n - 1];
     artist_name_ = findArtist();
     cout << "**************************************************************************************" << endl;
     cout << "ARTIST " << artist_name_ << endl;
-    ofNotifyEvent(artistSelection, artist_name_, this);
   }
+  if (e.key == 13)
+    ofNotifyEvent(artistSelection, artist_name_, this);
+
   /*
   std::cout << "CLICK" << std::endl;
   for (vector<stage>::iterator it = stages_.begin(); it != stages_.end(); it++) {
