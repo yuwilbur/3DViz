@@ -78,7 +78,7 @@ void Settings::draw() {
 void Settings::keyReleased(ofKeyEventArgs &e) {
   int n = e.key - 48;
   if (n >= 1 && n <= 6) {
-    selected_ = &stages_[n];
+    selected_ = &stages_[n-1];
     artist_name_ = findArtist();
     cout << "**************************************************************************************" << endl;
     cout << "ARTIST " << artist_name_ << endl;

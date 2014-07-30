@@ -18,7 +18,7 @@ void testApp::update(){
 void testApp::draw(){
   if (show_player_) {
     player_.draw();
-    /* testing that images get changed -- only for debugging
+    /* testing that images get changed -- only for debugging */
     ofPushStyle();
     ofSetColor(255, 255, 255, 255);
     ofFill();
@@ -27,7 +27,7 @@ void testApp::draw(){
     player_.particle_system_.textures_.color.draw(0, 0);
     ofEnableLighting();
     ofPopStyle();
-     */
+     
   } else {
     settings_.draw();
   }
