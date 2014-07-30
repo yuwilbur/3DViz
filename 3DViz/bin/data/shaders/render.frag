@@ -11,7 +11,9 @@ uniform float interpolation;
 void main() {
     vec2 st = gl_TexCoord[0].st;
     gl_FragColor = texture2DRect(sparkTex, st);
-    vec4 album_color = texture2DRect(albumArt, vec2(300, 150) - gl_FragCoord.st / 4);
+    vec2 album_coord = gl_FragCoord.st;
+    album_coord[0] = -album_coord[0];
+    vec4 album_color = texture2DRect(albumArt, vec2(-100, 1200) - album_coord * 1.5);
 
     vec4 particle_color = color / 255.0;
     vec4 col = particle_color + interpolation * (album_color - particle_color);

@@ -4,7 +4,7 @@
 using namespace Leap;
 
 void testApp::setup(){
-  player_.setup("DJ Icey");
+  player_.setup("Amon Tobin");
   show_player_ = true;
   settings_.setup();
   ofAddListener(settings_.artistSelection, this, &testApp::onArtistSelection);
